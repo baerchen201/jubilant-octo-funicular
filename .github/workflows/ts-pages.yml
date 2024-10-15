@@ -1,0 +1,30 @@
+name: Deploy TypeScript website to GitHub Pages
+
+on:
+  push:
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Download repository
+        uses: actions/checkout@v4
+      - name: Build TypeScript
+        run: tsc
+      - name: Compress & Upload pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "."
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
