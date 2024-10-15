@@ -3,7 +3,6 @@ name: Deploy TypeScript website to GitHub Pages
 on:
   push:
   workflow_dispatch:
-  workflow_call:
 
 permissions:
   id-token: write
