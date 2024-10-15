@@ -9,4 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: ls -lah
+      - run: tree -sno tree.txt --du
+      - uses: actions/upload-artifact@v4
+        with:
+          path: tree.txt
