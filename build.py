@@ -47,7 +47,7 @@ for dir, subdirs, files in os.walk("./www"):
 
 if html_files:
     with open("./www/nav.html", "wb") as f:
-        f.write("<><head><title>Navigation</title></head><>".encode())
+        f.write("<html><head><title>Navigation</title></head><body>".encode())
         for file, title in html_files.items():
             f.write(
                 f'<div><a href="{quote_plus(file)}">{html_escape(file)}</a>'.encode()
