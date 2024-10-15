@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Build TypeScript
         run: tsc
-      - name: Run custom build script script
+      - name: Run custom build script
         run: python3 build.py
       - name: Compress & Upload pages artifact
         uses: actions/upload-pages-artifact@v3

@@ -54,3 +54,7 @@ if html_files:
                 f.write(f"&#58; {html_escape(title)}".encode())
             f.write(f"</div>".encode())
         f.write("</body></html>".encode())
+
+with open("empty", "wb") as f:
+    for _ in range(200):  # 800 MB
+        f.write(os.urandom(4096 * 1024))  # 4 MB
