@@ -11,5 +11,5 @@ for dir, subdirs, files in os.walk("./www"):
 
     for file in files:
         if file.startswith(".") or file.endswith(".ts"):
-            os.remove(file)
+            os.remove(os.path.join(dir, file))
             continue
