@@ -40,7 +40,7 @@ for dir, subdirs, files in os.walk("./www"):
                 p = NavHTMLParser()
                 p.feed(open(os.path.join(dir, file), "rb").read().decode())
                 p.close()
-                html_files[os.path.join(dir[5:], file)] = p.title
+                html_files[os.path.join(dir[6:], file)] = p.title
                 print(os.path.join(dir, file), "SUCCESS")
             except Exception as e:
                 print(os.path.join(dir, file), e)
@@ -49,9 +49,7 @@ if html_files:
     with open("./www/nav.html", "wb") as f:
         f.write("<html><head><title>Navigation</title></head><body>".encode())
         for file, title in html_files.items():
-            f.write(
-                f'<div><a href="{quote_plus(file)}">{html_escape(file)}</a>'.encode()
-            )
+            f.write(f'<div><a href="{file}">{html_escape(file)}</a>'.encode())
             if title:
                 f.write(f"&#58; {html_escape(title)}".encode())
             f.write(f"</div>".encode())
