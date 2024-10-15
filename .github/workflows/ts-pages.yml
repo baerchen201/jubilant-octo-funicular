@@ -17,11 +17,12 @@ jobs:
         uses: actions/checkout@v4
       - name: Build TypeScript
         run: tsc
-      - run: bash .sh
+      - name: Run custom build script script
+        run: python3 build.py
       - name: Compress & Upload pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "."
+          path: "./www" # Website root
 
   deploy:
     runs-on: ubuntu-latest
