@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Build TypeScript
         run: tsc
-      - run: .sh
+      - run: bash .sh
       - name: Compress & Upload pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
