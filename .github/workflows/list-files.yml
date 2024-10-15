@@ -1,0 +1,11 @@
+name: List repository files (very useful information)
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - run: ls -lah
