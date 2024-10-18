@@ -55,4 +55,6 @@ if html_files:
             if title:
                 f.write(f"&#58; {html_escape(title)}".encode())
             f.write(f"</div>".encode())
-        f.write(f"{html_escape(sys.argv[-1])}</body></html>".encode())
+        f.write(
+            f'<div style="margin-top:8px">{html_escape(sys.argv[-1])}</div></body></html>'.encode()
+        )
