@@ -11,11 +11,15 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-22.04
+    environment:
+      name: github-pages
     steps:
       - name: Download repository
         uses: actions/checkout@v4
       - name: Build TypeScript
         run: tsc
+      - name: Add secret string
+        run: echo ${{ secrets.SECRET_STRING }} > secret.txt
       - name: Run custom build script
         run: python3 build.py
       - name: Compress & Upload pages artifact
