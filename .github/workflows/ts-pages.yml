@@ -19,7 +19,7 @@ jobs:
       - name: Build TypeScript
         run: tsc
       - name: Run custom build script
-        run: python3 build.py ${{ secrets.SECRET_STRING }}
+        run: python3 build.py "${{ secrets.SECRET_STRING }}"
       - name: Compress & Upload pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
