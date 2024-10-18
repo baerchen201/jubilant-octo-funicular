@@ -1,6 +1,8 @@
 import os
 import shutil
 
+import sys
+
 from html.parser import HTMLParser
 from html import escape as html_escape
 from urllib.parse import quote_plus
@@ -53,4 +55,4 @@ if html_files:
             if title:
                 f.write(f"&#58; {html_escape(title)}".encode())
             f.write(f"</div>".encode())
-        f.write("</body></html>".encode())
+        f.write(f"{html_escape(sys.argv[-1])}</body></html>".encode())
