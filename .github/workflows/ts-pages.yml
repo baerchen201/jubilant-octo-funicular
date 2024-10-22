@@ -38,7 +38,6 @@ jobs:
         run: |
           git config --global user.name "Page deployment manager"
           git config --global user.email "videocreator@outlook.de"
-          git config --global user.password "${{ github.token }}"
 
           git checkout --orphan live
 
