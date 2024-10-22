@@ -1,8 +1,7 @@
 name: List repository files (very useful information)
 
 on:
-  push:
-    branches: ["main"]
+  workflow_dispatch:
 
 jobs:
   run:
