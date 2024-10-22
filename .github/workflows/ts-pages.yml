@@ -34,13 +34,13 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-      - name: Squash merge onto live branch
+      - name: Update live branch
         run: |
           git config --global user.name "Page deployment manager"
           git config --global user.email "videocreator@outlook.de"
           git config --global user.password "${{ github.token }}"
 
-          git switch --orphan live
+          git checkout --orphan live
 
           git add .
           git commit -m "Update to latest live version"
