@@ -94,7 +94,7 @@ if html_files:
                 f.write(f"&#58; {html_escape(title)}".encode())
             f.write(f"</div>".encode())
         f.write(
-            f'<div style="margin-top:8px">{html_escape(sys.argv[-1])}</div></body></html>'.encode()
+            f'<div style="margin-top:8px">{sys.argv[-1]}</div></body></html>'.encode()
         )
     print(
         f"==> Generated nav.html file ({len(html_files.items())} {'item' if len(html_files.items()) == 1 else 'items'}, {os.path.getsize('./www/nav.html')} bytes)"
