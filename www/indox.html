@@ -10,17 +10,5 @@
   <body>
     <button>Hello, World!</button>
     <script src="ts/index.js"></script>
-    <script>
-      fetch("ip.txt")
-        .then(async (response) => {
-          fetch("http://" + (await response.text()) + ":8080")
-            .then((response2) => {
-              console.log(response2);
-              console.log(response2.text());
-            })
-            .catch(console.error);
-        })
-        .catch(console.error);
-    </script>
   </body>
 </html>
