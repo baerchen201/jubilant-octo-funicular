@@ -23,13 +23,23 @@ class NavHTMLParser(HTMLParser):
 
 html_files = {}
 
-for dir, subdirs, files in os.walk("./www"):
+for dir, subdirs, files in os.walk("."):
     if (not subdirs and not files) or (
         all([file.startswith(".") for file in files])
         and all([subdir.startswith(".") for subdir in subdirs])
     ):
         shutil.rmtree(dir)
         continue
+
+    if os.path.isfile(os.path.join(dir, ".rm")):
+        for file in [
+            os.path.join(dir, i.strip())
+            for i in open(os.path.join(dir, ".rm"), "r").read().strip().splitlines()
+        ]:
+            if os.path.isdir(file):
+                shutil.rmtree(file)
+            elif os.path.isfile(file):
+                os.remove(file)
 
     for file in files:
         if file.startswith(".") or file.endswith(".ts"):

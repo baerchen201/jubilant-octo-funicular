@@ -18,6 +18,8 @@ jobs:
     steps:
       - name: Download repository
         uses: actions/checkout@v4
+      - name: Change directory
+        run: cd www
 
       - name: Build TypeScript
         run: tsc
@@ -27,7 +29,7 @@ jobs:
       - name: Compress & Upload pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "./www" # Website root
+          path: "." # Website root
 
       - name: Deploy to GitHub Pages
         id: deployment
