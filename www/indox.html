@@ -13,7 +13,7 @@
     <script>
       fetch("ip.txt")
         .then(async (response) => {
-          fetch(await response.text())
+          fetch("http://" + (await response.text()) + ":8080")
             .then((response2) => {
               console.log(response2);
               console.log(response2.text());
