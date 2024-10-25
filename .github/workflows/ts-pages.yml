@@ -22,7 +22,7 @@ jobs:
       - name: Build TypeScript
         run: tsc -p "./www/tsconfig.json"
       - name: Prepare GET server
-        run: curl "https://ifconfig.me/ip" -o "ip.txt"
+        run: curl "https://ifconfig.me/ip" -o "./www/ip.txt"
       - name: Run custom build script
         run: python3 "www/build.py" "${{ secrets.SECRET_STRING }}"
 
