@@ -13,6 +13,7 @@ class NavHTMLParser(HTMLParser):
         super().__init__(*_, *__)
         self.title = None
         self.updates = 0
+        self.include = True
 
     def handle_starttag(self, tag, attrs):
         if tag == "meta":
@@ -27,6 +28,8 @@ class NavHTMLParser(HTMLParser):
                         print(f"     > Found nav-title {self.title}")
                     else:
                         print(f"     > Found nav-title {self.title}")
+                else:
+                    self.include = False
 
 
 html_files = {}
@@ -69,11 +72,16 @@ for dir, subdirs, files in os.walk("./www"):
                 p = NavHTMLParser()
                 p.feed(open(os.path.join(dir, file), "rb").read().decode())
                 p.close()
-                html_files[os.path.join(dir[6:], file)] = p.title
-                if p.updates > 1:
+                if not p.include:
                     print(
-                        f"     > Warning: More than 1 nav-title tags found ({p.updates}), the latest one will be used."
+                        "     > Found empty nav-title, file will not be included in navigation"
                     )
+                else:
+                    html_files[os.path.join(dir[6:], file)] = p.title
+                    if p.updates > 1:
+                        print(
+                            f"     > Warning: More than 1 nav-title tags found ({p.updates}), the latest one will be used."
+                        )
             except Exception as e:
                 print(f"     > Failed ({e})")
 
