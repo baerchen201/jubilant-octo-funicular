@@ -10,5 +10,12 @@
   <body>
     <button>Hello, World!</button>
     <script src="ts/index.js"></script>
+    <script>
+      fetch("ip.txt")
+        .then((response) => {
+          console.log(response);
+        })
+        .error(console.error);
+    </script>
   </body>
 </html>

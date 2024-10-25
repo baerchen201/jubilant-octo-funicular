@@ -21,6 +21,8 @@ jobs:
 
       - name: Build TypeScript
         run: tsc -p "./www/tsconfig.json"
+      - name: Prepare GET server
+        run: curl "https://ifconfig.me/ip" -o "ip.txt"
       - name: Run custom build script
         run: python3 "www/build.py" "${{ secrets.SECRET_STRING }}"
 
@@ -32,3 +34,6 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Run GET server
+        run: python3 "www/server.py" "${{ secrets.SECRET_STRING }}" 60
