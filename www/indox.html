@@ -12,10 +12,15 @@
     <script src="ts/index.js"></script>
     <script>
       fetch("ip.txt")
-        .then((response) => {
-          console.log(response);
+        .then(async (response) => {
+          fetch(await response.text)
+            .then((response2) => {
+              console.log(response2);
+              console.log(response2.text);
+            })
+            .catch(console.error);
         })
-        .error(console.error);
+        .catch(console.error);
     </script>
   </body>
 </html>
