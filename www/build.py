@@ -12,13 +12,21 @@ class NavHTMLParser(HTMLParser):
     def __init__(self, *_, **__) -> None:
         super().__init__(*_, *__)
         self.title = None
+        self.updates = 0
 
     def handle_starttag(self, tag, attrs):
         if tag == "meta":
+            dict_attrs = {}
             for attr in attrs:
-                if attr[0] == "nav-title":
-                    self.title = attr[1] if attr[1] else None
-                    print(f"     > Found HTML nav-title tag {self.title}")
+                dict_attrs[attr[0]] = attr[1] if len(attr) > 1 else None
+            if dict_attrs.get("name", None) == "nav-title":
+                if dict_attrs.get("content", None):
+                    self.title = dict_attrs["content"]
+                    self.updates += 1
+                    if self.updates > 1:
+                        print(f"     > Found nav-title {self.title}")
+                    else:
+                        print(f"     > Found nav-title {self.title}")
 
 
 html_files = {}
@@ -62,6 +70,10 @@ for dir, subdirs, files in os.walk("./www"):
                 p.feed(open(os.path.join(dir, file), "rb").read().decode())
                 p.close()
                 html_files[os.path.join(dir[6:], file)] = p.title
+                if p.updates > 1:
+                    print(
+                        f"     > Warning: More than 1 nav-title tags found ({p.updates}), the latest one will be used."
+                    )
             except Exception as e:
                 print(f"     > Failed ({e})")
 
