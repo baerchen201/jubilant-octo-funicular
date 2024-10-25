@@ -23,7 +23,7 @@ class NavHTMLParser(HTMLParser):
 
 html_files = {}
 
-for dir, subdirs, files in os.walk("."):
+for dir, subdirs, files in os.walk("./www"):
     if (not subdirs and not files) or (
         all([file.startswith(".") for file in files])
         and all([subdir.startswith(".") for subdir in subdirs])
