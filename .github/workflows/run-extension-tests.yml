@@ -41,7 +41,8 @@ jobs:
         run: npm i
       - name: Install other dependencies
         run: |
-          winget install RubyInstallerTeam.Ruby.3.2
+          curl -Lo ruby.exe https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.3.5-1/rubyinstaller-devkit-3.3.5-1-x64.exe
+          .\ruby.exe
           gem install rufo
       - name: Run tests
         run: npm run test
