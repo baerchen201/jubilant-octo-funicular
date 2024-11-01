@@ -1,0 +1,28 @@
+on:
+  workflow_dispatch:
+    inputs:
+      string:
+        type: string
+        required: true
+      number:
+        type: number
+        required: false
+      boolean:
+        type: boolean
+        required: false
+      choice:
+        type: choice
+        required: false
+        options:
+          - A
+          - B
+          - C
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo '${{ inputs.string }}'
+      - run: echo '${{ inputs.number }}'
+      - run: echo '${{ inputs.boolean }}'
+      - run: echo '${{ inputs.choice }}'
