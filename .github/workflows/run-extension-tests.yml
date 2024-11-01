@@ -4,7 +4,19 @@ on:
   push:
     paths: [.github/workflows/run-extension-tests.yml, vscode-rufo]
   workflow_call:
+    inputs:
+      pre-release:
+        type: boolean
+        description: Whether to generate a pre-release
+        default: true
+        required: false
   workflow_dispatch:
+    inputs:
+      pre-release:
+        type: boolean
+        description: Whether to generate a pre-release
+        default: false
+        required: false
 
 jobs:
   linux:
@@ -94,8 +106,12 @@ jobs:
       - name: Install vsce
         run: npm i -g @vscode/vsce
 
-      - name: Package extension
+      - name: Package extension (pre-release)
+        if: inputs.pre-release
         run: vsce package --pre-release
+      - name: Package extension
+        if: !inputs.pre-release
+        run: vsce package
 
       - name: Upload packaged extionsion
         uses: actions/upload-artifact@v4
