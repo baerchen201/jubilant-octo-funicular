@@ -13,6 +13,10 @@ jobs:
           submodules: recursive
       - name: Change directory
         run: cd vscode-rufo
+      - name: Print working directory and list its contents
+        run: |
+          echo $PWD
+          ls -lah
       - name: Install dependencies
         run: npm i
       - name: Run pre-test script
