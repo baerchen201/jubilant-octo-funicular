@@ -6,13 +6,14 @@ on:
 jobs:
   linux:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: "vscode-rufo"
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           submodules: recursive
-      - name: Change directory
-        run: cd vscode-rufo
       - name: Print working directory and list its contents
         run: |
           echo $PWD
