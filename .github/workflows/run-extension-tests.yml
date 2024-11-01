@@ -26,6 +26,4 @@ jobs:
           sudo apt install xorg
       - name: Run tests
         run: |
-          startx &
-          npm run test
-          kill %1
+          startx npm run test
