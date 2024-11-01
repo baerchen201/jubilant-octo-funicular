@@ -101,4 +101,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           path: "vscode-rufo/*.vsix"
+          name: pre-release
           if-no-files-found: error
