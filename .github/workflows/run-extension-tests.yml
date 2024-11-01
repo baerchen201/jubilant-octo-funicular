@@ -23,7 +23,7 @@ jobs:
       - name: Install simulated X-server
         run: |
           sudo apt update
-          sudo apt install xvfb-y
+          sudo apt install xvfb -y
       - name: Install ruby and rufo
         run: |
           sudo apt update
