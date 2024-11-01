@@ -18,8 +18,10 @@ jobs:
         run: |
           echo $PWD
           ls -lah
-      - name: Install dependencies
+      - name: Install npm dependencies
         run: npm i
+      - name: Install other dependencies
+        run: apt install xorg-server xorg-xinit
       - name: Run tests
         run: |
           startx &
