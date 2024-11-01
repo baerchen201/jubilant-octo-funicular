@@ -3,6 +3,7 @@ name: Deploy TypeScript website to GitHub Pages
 on:
   push:
     branches: ["main"]
+    paths: [.github/workflows/ts-pages.yml, www]
   workflow_dispatch:
 
 permissions:
