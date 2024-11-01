@@ -1,0 +1,17 @@
+on:
+  push:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Change directory
+        run: cd vscode-rufo
+      - name: Install dependencies
+        run: npm i
+      - name: Run pre-test script
+        run: npm run pretest
+      - name: Run tests
+        run: npm run test

@@ -1,0 +1,3 @@
+[submodule "vscode-rufo"]
+	path = vscode-rufo
+	url = https://github.com/baerchen201/vscode-rufo.git
