@@ -7,6 +7,10 @@ jobs:
   linux:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
       - name: Change directory
         run: cd vscode-rufo
       - name: Install dependencies
