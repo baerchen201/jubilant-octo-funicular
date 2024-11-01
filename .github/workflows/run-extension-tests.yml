@@ -24,7 +24,7 @@ jobs:
         run: |
           sudo apt update
           sudo apt install xvfb ruby -y
-          gem install rufo
+          sudo gem install rufo
       - name: Run tests
         run: |
           Xvfb :99 &
