@@ -21,7 +21,9 @@ class NavHTMLParser(HTMLParser):
                 dict_attrs[attr[0]] = attr[1] if len(attr) > 1 else None
 
             if dict_attrs.get("name", None) == "nav-title":
-                self.title = dict_attrs.get("content", None)
+                self.title = dict_attrs.get("content", "")
+                if self.title is None:
+                    self.title = ""
 
                 self.updates += 1
                 print(f"     > Found nav-title {self.title}")
