@@ -1,11 +1,8 @@
 import os
 import shutil
 
-import sys
-
 from html.parser import HTMLParser
 from html import escape as html_escape
-from urllib.parse import quote_plus
 
 
 class NavHTMLParser(HTMLParser):
@@ -29,7 +26,8 @@ class NavHTMLParser(HTMLParser):
                 print(f"     > Found nav-title {self.title}")
 
 
-html_files = {}
+nav_files = {}
+nav_status = {"failure": 0, "success": 0}
 
 for dir, subdirs, files in os.walk("./www"):
     print(
@@ -75,29 +73,39 @@ for dir, subdirs, files in os.walk("./www"):
                         print("     > No nav-title found")
 
                     case "":
-                        html_files[os.path.join(dir[6:], file)] = ""
+                        nav_files[os.path.join(dir[6:], file)] = ""
 
                     case _:
-                        html_files[os.path.join(dir[6:], file)] = p.title
+                        nav_files[os.path.join(dir[6:], file)] = p.title
 
                 if p.updates > 1:
                     print(
                         f"     > Warning: More than 1 nav-title tags found ({p.updates}), only the last one will be used."
                     )
+                nav_status["success"] += 1
             except Exception as e:
+                nav_status["failure"] += 1
                 print(f"     > Failed ({e})")
 
-if html_files:
+if nav_files:
     with open("./www/nav.html", "wb") as f:
         f.write("<html><head><title>Navigation</title></head><body>".encode())
-        for file, title in html_files.items():
+        for file, title in nav_files.items():
             f.write(f'<div><a href="{file}">{html_escape(file)}</a>'.encode())
             if title:
                 f.write(f"&#58; {html_escape(title)}".encode())
             f.write(f"</div>".encode())
         f.write(
-            f'<div style="margin-top:8px"><img src="secret.gif" /></div></body></html>'.encode()
+            f'<div style="margin-top:8px"><img style="width: 75px" src="secret.gif" /></div></body></html>'.encode()
         )
     print(
-        f"==> Generated nav.html file ({len(html_files.items())} {'item' if len(html_files.items()) == 1 else 'items'}, {os.path.getsize('./www/nav.html')} bytes)"
+        f"==> Generated nav.html file ({len(nav_files.items())} {'item' if len(nav_files.items()) == 1 else 'items'}, {os.path.getsize('./www/nav.html')} bytes)"
     )
+
+e = 0
+if nav_status["failure"] > 0 and nav_status["success"] < nav_status["failure"]:
+    e = 1
+
+
+os.remove(__file__)
+raise SystemExit(e)
