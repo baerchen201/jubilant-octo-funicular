@@ -5,7 +5,7 @@ on:
     branches: ["main"]
     paths:
       - ".github/workflows/ts-pages.yml"
-      - "www"
+      - "www/**"
   workflow_dispatch:
 
 permissions:

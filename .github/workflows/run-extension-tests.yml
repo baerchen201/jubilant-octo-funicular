@@ -2,7 +2,9 @@ name: Run automated tests
 
 on:
   push:
-    paths: [.github/workflows/run-extension-tests.yml, vscode-rufo]
+    paths:
+      - ".github/workflows/run-extension-tests.yml"
+      - "vscode-rufo/**"
   workflow_call:
   workflow_dispatch:
 
