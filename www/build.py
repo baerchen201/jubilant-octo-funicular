@@ -13,23 +13,19 @@ class NavHTMLParser(HTMLParser):
         super().__init__(*_, *__)
         self.title = None
         self.updates = 0
-        self.include = True
 
     def handle_starttag(self, tag, attrs):
         if tag == "meta":
             dict_attrs = {}
             for attr in attrs:
                 dict_attrs[attr[0]] = attr[1] if len(attr) > 1 else None
+
             if dict_attrs.get("name", None) == "nav-title":
-                if dict_attrs.get("content", None):
+                if dict_attrs.get("content", None) is not None:
                     self.title = dict_attrs["content"]
+
                     self.updates += 1
-                    if self.updates > 1:
-                        print(f"     > Found nav-title {self.title}")
-                    else:
-                        print(f"     > Found nav-title {self.title}")
-                else:
-                    self.include = False
+                    print(f"     > Found nav-title {self.title}")
 
 
 html_files = {}
@@ -72,16 +68,21 @@ for dir, subdirs, files in os.walk("./www"):
                 p = NavHTMLParser()
                 p.feed(open(os.path.join(dir, file), "rb").read().decode())
                 p.close()
-                if not p.include:
+
+                match p.title:
+                    case None:
+                        print("     > No nav-title found")
+
+                    case "":
+                        html_files[os.path.join(dir[6:], file)] = ""
+
+                    case _:
+                        html_files[os.path.join(dir[6:], file)] = p.title
+
+                if p.updates > 1:
                     print(
-                        "     > Found empty nav-title, file will not be included in navigation"
+                        f"     > Warning: More than 1 nav-title tags found ({p.updates}), only the last one will be used."
                     )
-                else:
-                    html_files[os.path.join(dir[6:], file)] = p.title
-                    if p.updates > 1:
-                        print(
-                            f"     > Warning: More than 1 nav-title tags found ({p.updates}), the latest one will be used."
-                        )
             except Exception as e:
                 print(f"     > Failed ({e})")
 
