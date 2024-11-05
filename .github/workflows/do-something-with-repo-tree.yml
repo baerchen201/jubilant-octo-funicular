@@ -13,12 +13,12 @@ jobs:
     steps:
       - name: Fetch repo tree (root)
         run: |
-          curl -Lo tree-root.json --fail-with-body "https://api.github.com/repos/${{ github.repository }}/git/trees/${{ github.sha }}"
+          curl -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -H "X-GitHub-Api-Version: 2022-11-28" -Lo tree-root.json --fail-with-body "https://api.github.com/repos/${{ github.repository }}/git/trees/${{ github.sha }}"
           echo "========"
           cat tree-root.json
       - name: Fetch repo tree (recursive)
         run: |
-          curl -Lo tree-recursive.json --fail-with-body "https://api.github.com/repos/${{ github.repository }}/git/trees/${{ github.sha }}?recursive=1"
+          curl -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -H "X-GitHub-Api-Version: 2022-11-28" -Lo tree-recursive.json --fail-with-body "https://api.github.com/repos/${{ github.repository }}/git/trees/${{ github.sha }}?recursive=1"
           echo "========"
           cat tree-recursive.json
 
