@@ -12,7 +12,7 @@ match len(types.keys()):
         print("No tree objects found")
         raise SystemExit(1)
     case 1:
-        print(f"Found {types[object["type"]]} objects of type {object["type"]}")
+        print(f"Found {types[object['type']]} objects of type {object['type']}")
     case _:
         print(f"Found {len(types.keys())} types:")
         for type_name, amount in types.items():
