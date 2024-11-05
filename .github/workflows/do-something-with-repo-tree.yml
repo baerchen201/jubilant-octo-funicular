@@ -1,4 +1,4 @@
-name: Do nothing with repo file structure
+name: List repo object types
 
 on:
   push:
