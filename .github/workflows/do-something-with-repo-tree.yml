@@ -8,13 +8,19 @@ on:
   workflow_dispatch:
 
 jobs:
-  nothing:
+  get-tree-lists:
     runs-on: ubuntu-22.04
     steps:
-      - name: Fetch repo tree
-        run: curl -o tree.json "https://api.github.com/repos/${{ github.repository }}/git/trees/${{ github.sha }}"
+      - name: Fetch repo tree (root)
+        run: |
+          curl -Lo tree-root.json --fail-with-body "https://api.github.com/repos/${{ github.repository }}/git/trees/${{ github.sha }}"
+          echo "========"
+          cat tree-root.json
       - name: Fetch repo tree (recursive)
-        run: curl -o tree-recursive.json "https://api.github.com/repos/${{ github.repository }}/git/trees/${{ github.sha }}?recursive=1"
+        run: |
+          curl -Lo tree-recursive.json --fail-with-body "https://api.github.com/repos/${{ github.repository }}/git/trees/${{ github.sha }}?recursive=1"
+          echo "========"
+          cat tree-recursive.json
 
       - name: Upload tree files
         uses: actions/upload-artifact@v4
@@ -23,19 +29,19 @@ jobs:
           name: tree
           if-no-files-found: error
 
-  something:
-    needs: nothing
+  list-object-types:
+    needs: get-tree-lists
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Download tree files
+      - name: Download tree lists
         uses: actions/download-artifact@v4
         with:
           name: tree
 
-      - name: Do something?
-        run: python3 "treeing.py" "tree.json"
-      - name: Do something MORE!
+      - name: Object types in repository root
+        run: python3 "treeing.py" "tree-root.json"
+      - name: Object types in repository (recursive)
         run: python3 "treeing.py" "tree-recursive.json"
