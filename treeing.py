@@ -16,4 +16,4 @@ match len(types.keys()):
     case _:
         print(f"Found {len(types.keys())} types:")
         for type_name, amount in types.items():
-            print(f"  > {amount} {type_name}" + ("s" if amount == 1 else ""))
+            print(f"  > {amount} {type_name}" + ("" if amount == 1 else "s"))
