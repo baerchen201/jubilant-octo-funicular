@@ -10,9 +10,9 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Fetch repo tree
-        run: curl -o tree.json "https://api.github.com/repos/${{ github.repository_owner }}/${{ github.repository }}/git/trees/${{ github.sha }}"
+        run: curl -o tree.json "https://api.github.com/repos/${{ github.repository }}/git/trees/${{ github.sha }}"
       - name: Fetch repo tree (recursive)
-        run: curl -o tree-recursive.json "https://api.github.com/repos/${{ github.repository_owner }}/${{ github.repository }}/git/trees/${{ github.sha }}?recursive=1"
+        run: curl -o tree-recursive.json "https://api.github.com/repos/${{ github.repository }}/git/trees/${{ github.sha }}?recursive=1"
 
       - name: Do something with tree
         uses: actions/upload-artifact@v4
