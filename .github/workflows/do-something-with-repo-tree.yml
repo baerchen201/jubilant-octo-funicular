@@ -1,6 +1,8 @@
 name: Do something with repo file structure
 
 on:
+  push:
+    paths: [".github/workflows/do-something-with-repo-tree.yml"]
   workflow_dispatch:
 
 jobs:
