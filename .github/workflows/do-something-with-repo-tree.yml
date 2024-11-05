@@ -2,7 +2,9 @@ name: Do nothing with repo file structure
 
 on:
   push:
-    paths: [".github/workflows/do-something-with-repo-tree.yml"]
+    paths:
+      - ".github/workflows/do-something-with-repo-tree.yml"
+      - "treeing.py"
   workflow_dispatch:
 
 jobs:
@@ -20,3 +22,20 @@ jobs:
           path: "tree*.json"
           name: tree
           if-no-files-found: error
+
+  something:
+    needs: nothing
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download tree files
+        uses: actions/download-artifact@v4
+        with:
+          name: tree
+
+      - name: Do something?
+        run: python3 "treeing.py" "tree.json"
+      - name: Do something MORE!
+        run: python3 "treeing.py" "tree-recursive.json"
