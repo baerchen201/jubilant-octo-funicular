@@ -10,7 +10,13 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      
+      - name: Update shells
+        run: |
+          sudo apt update
+          sudo apt install bash zsh -y
+          bash --version
+          zsh --version
+
       - name: Test .bashrc
         run: |
           mv linux/.bashrc ~
