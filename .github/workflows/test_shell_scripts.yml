@@ -20,9 +20,17 @@ jobs:
       - name: Test .bashrc
         run: |
           mv linux/.bashrc ~
-          echo -e "echo \"\$SHELL\"\nexit\n" | bash -i
+          echo -e "echo \"\$SHELL\"\nexit\n" | bash -i > bash.txt
       - name: Test .zshrc # I really don't care about zsh, just for the sake of completeness
         run: |
           mv linux/.zshrc ~
-          echo -e "echo \"\$SHELL\"\nexit\n" | zsh -i
+          echo -e "echo \"\$SHELL\"\nexit\n" | zsh -i > zsh.txt
+
+      - name: Upload logs
+        uses: actions/upload-artifact@v4
+        with:
+          path:
+            "{bash.txt,zsh.txt}"
+          name: logs
+          if-no-files-found: error
 
