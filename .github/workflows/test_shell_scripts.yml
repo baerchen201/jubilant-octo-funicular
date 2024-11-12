@@ -1,6 +1,6 @@
 on:
   push:
-    paths: ["linux", ".github/workflows/test_shell_scripts.yml"]
+    paths: ["linux/**", ".github/workflows/test_shell_scripts.yml"]
   workflow_dispatch:
 
 name: Test shell scripts
