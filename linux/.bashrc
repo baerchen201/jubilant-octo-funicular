@@ -10,7 +10,7 @@ if [[ $- == *i* ]]; then
 	if (( $SHLVL > 1 )); then echo -e " - nested level $(( $SHLVL - 1 ))"; else echo ""; fi
 	
 	# Set up prompt
-	export PS1="\e[0m\e[91m\u\e[33m@\e[34m\H\e[0m \$(if [ \"\$PWD\" = \"\$HOME\" ];then echo \"~\";else echo \"\$PWD\";fi)\e[2m>>\e[0m "
+	export PS1="\e[0m\$(e=\$?; if [ \$e = 0 ]; then echo -n \"\e[90m\"; fi; echo \"Process exited with code \$e\")\e[0m\n\e[0m\e[91m\u\e[33m@\e[34m\H\e[0m \$(if [ \"\$PWD\" = \"\$HOME\" ];then echo \"~\";else echo \"\$PWD\";fi)\e[2m>>\e[0m "
 	export PS2="\e[2m>> \e[0m"
 fi
 
