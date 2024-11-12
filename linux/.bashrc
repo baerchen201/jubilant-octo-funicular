@@ -20,4 +20,6 @@ yes () {
 		git commit
 	fi
 }
+alias yo="git status"
+alias yaa="git push -f"
 
