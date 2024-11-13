@@ -1,0 +1,12 @@
+#!/bin/false
+
+# Set to 1 to enable
+
+# Hide welcome message
+hide_welcome_message=0
+
+# Display exit code on success
+display_zero_exitcode=0
+
+# Disable git aliases (yes, yeet, yoink, yo, etc.)
+disable_git_aliases=0
