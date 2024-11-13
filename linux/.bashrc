@@ -9,13 +9,16 @@ if [[ $- == *i* ]]; then
 	echo -en "bash $(if ! [ ${BASH_VERSINFO[4]} = "release" ];then echo "${BASH_VERSINFO[4]} ";fi )${BASH_VERSINFO[0]}.${BASH_VERSINFO[1]}\e[90m.${BASH_VERSINFO[2]}.${BASH_VERSINFO[3]}\e[0m"
 	if (( $SHLVL > 1 )); then echo -e " - nested level $(( $SHLVL - 1 ))"; else echo ""; fi
 	
+	_COMMANDS=-1
+	PROMPT_COMMAND="let _COMMANDS++"
+
 	# Set up prompt
 	_exitcode () {
-		if ! [ $LINENO = 0 ]; then 
+		if ! [ $_COMMANDS = 0 ]; then 
 			if [ $1 = 0 ]; then
 				echo -en "\e[90m"
-			fi;
-			echo "Process exited with code $1"
+			fi
+			echo -en "Process exited with code $1\n\u200B"
 		fi
 	}
 	_pWd () {
@@ -28,7 +31,7 @@ if [[ $- == *i* ]]; then
 	_suffix () { echo -en "\e[2m>> \e[0m"; }
 	PS2="\$(_suffix)"
 	PS1="\e[0m\
-\$(_exitcode \$?)
+\$(_exitcode \$?)\
 \e[91m\u\e[33m@\e[34m\H\e[0m \
 \$(_pWd)\
 \$(_suffix)"
