@@ -1,0 +1,13 @@
+[Unit]
+Description=Openbox
+After=systemd-user-sessions.service plymouth-quit-wait.service getty-pre.target
+
+IgnoreOnIsolate=yes
+Conflicts=rescue.service
+
+[Service]
+ExecStart=startx /usr/bin/openbox
+Restart=no
+
+[Install]
+WantedBy=multi-user.target
