@@ -44,7 +44,7 @@ if [[ $- == *i* ]]; then
 	_suffix="\e[2m>> \e[0m"
 	PS2="$_suffix"
 	PS1="\e[0m\
-\e[91m\u\e[33m@\e[34m\H\e[0m \
+\e[91m\u\e[93m@\e[94m\H\e[0m \
 \$(_pWd)\
 $_suffix"
 
