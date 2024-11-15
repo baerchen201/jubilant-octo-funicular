@@ -16,24 +16,24 @@ if [[ $- == *i* ]]; then
 	fi
 
 
-	# Command counter
-	_COMMANDS=-1
-	PROMPT_COMMAND="let _COMMANDS++"
-
-
-	# Set up prompt
-	_exitcode () {
-		if ! [ $_COMMANDS = 0 ]; then 
-			if [ $1 = 0 ]; then
+	# Prompt functions
+	_prompt () {
+		_e=$?
+		if let _COUNTER++; then
+			if [ $_e = 0 ]; then
 				if ! [ "$display_zero_exitcode" = "1" ]; then return 0; fi
 				echo -en "\e[90m"
 			else
 				echo -en "\e[1;91m"
 			fi
-
-			echo -en "Process exited with code $1\n\u200B"
+			echo "Process exited with code $_e"
 		fi
 	}
+
+	PROMPT_COMMAND=_prompt
+
+
+	# Set up prompt
 	_pWd () {
 		if [ "$PWD" = "$HOME" ]; then
 			echo "~"
@@ -41,13 +41,12 @@ if [[ $- == *i* ]]; then
 			echo "$PWD"
 		fi
 	}
-	_suffix () { echo -en "\e[2m>> \e[0m"; }
-	PS2="\$(_suffix)"
+	_suffix="\e[2m>> \e[0m"
+	PS2="$_suffix"
 	PS1="\e[0m\
-\$(_exitcode \$?)\
 \e[91m\u\e[33m@\e[34m\H\e[0m \
 \$(_pWd)\
-\$(_suffix)"
+$_suffix"
 
 
 	# Git aliases
