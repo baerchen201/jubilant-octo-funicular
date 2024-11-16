@@ -1,3 +1,6 @@
 [submodule "vscode-rufo"]
 	path = vscode-rufo
 	url = https://github.com/baerchen201/vscode-rufo.git
+[submodule "linux/bashrc"]
+	path = linux/bashrc
+	url = https://github.com/baerchen201/bashrc.git
