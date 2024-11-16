@@ -22,9 +22,9 @@ if [[ $- == *i* ]]; then
 		if let _COUNTER++; then
 			if [ $_e = 0 ]; then
 				if ! [ "$display_zero_exitcode" = "1" ]; then return 0; fi
-				echo -en "\e[90m"
+				echo -en "\[\e[90m\]"
 			else
-				echo -en "\e[1;91m"
+				echo -en "\[\e[1;91m\]"
 			fi
 			echo "Process exited with code $_e"
 		fi
@@ -41,10 +41,10 @@ if [[ $- == *i* ]]; then
 			echo "$PWD"
 		fi
 	}
-	_suffix="\e[90m>> \e[0m"
+	_suffix="\[\e[90m\]>> \[\e[0m\]"
 	PS2="$_suffix"
-	PS1="\e[0m\
-\e[91m\u\e[93m@\e[94m\H\e[0m \
+	PS1="\[\e[0m\
+\e[91m\]\u\[\e[93m\]@\[\e[94m\]\H\[\e[0m\] \
 \$(_pWd)\
 $_suffix"
 
