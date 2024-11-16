@@ -41,7 +41,7 @@ if [[ $- == *i* ]]; then
 			echo "$PWD"
 		fi
 	}
-	_suffix="\e[2m>> \e[0m"
+	_suffix="\e[90m>> \e[0m"
 	PS2="$_suffix"
 	PS1="\e[0m\
 \e[91m\u\e[93m@\e[94m\H\e[0m \
