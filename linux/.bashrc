@@ -22,9 +22,9 @@ if [[ $- == *i* ]]; then
 		if let _COUNTER++; then
 			if [ $_e = 0 ]; then
 				if ! [ "$display_zero_exitcode" = "1" ]; then return 0; fi
-				echo -en "\[\e[90m\]"
+				echo -en "\e[90m"
 			else
-				echo -en "\[\e[1;91m\]"
+				echo -en "\e[1;91m"
 			fi
 			echo "Process exited with code $_e"
 		fi
