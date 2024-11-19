@@ -12,6 +12,16 @@
       "presentation": {
         "reveal": "never"
       }
+    },
+    {
+      "type": "shell",
+      "command": "sass --watch www",
+      "group": "build",
+      "label": "sass",
+      "runOptions": { "runOn": "folderOpen" },
+      "presentation": {
+        "reveal": "never"
+      }
     }
   ]
 }

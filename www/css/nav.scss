@@ -1,6 +1,13 @@
+$link-color: #e00;
+$link-color-hover: #f66;
+$title-color: #889;
+
 div {
-  color: #889;
+  color: $title-color;
   a {
-    color: #e00;
+    color: $link-color;
+    &:hover {
+      color: $link-color-hover;
+    }
   }
 }
