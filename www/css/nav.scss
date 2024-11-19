@@ -1,13 +1,14 @@
-$link-color: light-dark(#e00, #a00);
+$link-color: light-dark(#e00, #b00);
 $link-color-hover: light-dark(#f66, #d22);
-$title-color: light-dark(#889, #555);
+$title-color: light-dark(#222, #aaa);
+$background: light-dark(#eee, #111);
 
 :root {
   color-scheme: light dark;
 }
 
 body {
-  background: light-dark(#fff, #000);
+  background: $background;
 
   div {
     color: $title-color;
