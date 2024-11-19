@@ -1,10 +1,10 @@
-name: Deploy TypeScript website to GitHub Pages
+name: Compile and deploy website to GitHub Pages
 
 on:
   push:
     branches: ["main"]
     paths:
-      - ".github/workflows/ts-pages.yml"
+      - ".github/workflows/deploy-pages.yml"
       - "www/**"
   workflow_dispatch:
 
@@ -24,6 +24,8 @@ jobs:
 
       - name: Build TypeScript
         run: tsc -p "./www/tsconfig.json"
+      - name: Process SASS
+        run: sass ./www
       - name: Decrypt secret gif
         run: openssl enc -aes-256-cbc -d -in "./www/secret.gif.bin" -out "./www/secret.gif" -nosalt -K "${{ secrets.SECRET_KEY }}" -iv "${{ secrets.SECRET_IV }}"
       - name: Run custom build script
