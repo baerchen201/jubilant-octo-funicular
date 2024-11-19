@@ -1,13 +1,22 @@
-$link-color: #e00;
-$link-color-hover: #f66;
-$title-color: #889;
+$link-color: light-dark(#e00, #a00);
+$link-color-hover: light-dark(#f66, #d22);
+$title-color: light-dark(#889, #555);
 
-div {
-  color: $title-color;
-  a {
-    color: $link-color;
-    &:hover {
-      color: $link-color-hover;
+:root {
+  color-scheme: light dark;
+}
+
+body {
+  background: light-dark(#fff, #000);
+
+  div {
+    color: $title-color;
+
+    a {
+      color: $link-color;
+      &:hover {
+        color: $link-color-hover;
+      }
     }
   }
 }
