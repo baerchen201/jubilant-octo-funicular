@@ -87,21 +87,25 @@ for dir, subdirs, files in os.walk("./www"):
                 nav_status["failure"] += 1
                 print(f"     > Failed ({e})")
 
-if nav_files:
-    with open("./www/nav.html", "wb") as f:
-        f.write("<html><head><title>Navigation</title></head><body>".encode())
+with open("./www/nav.html", "wb") as f:
+    f.write(
+        '<html><head><title>Navigation</title><link rel="stylesheet" src="css/nav.css" /></head><body>'.encode()
+    )
+    if nav_files:
         for file, title in nav_files.items():
             f.write(f'<div><a href="{file}">{html_escape(file)}</a>'.encode())
             if title:
                 f.write(f"&#58; {html_escape(title)}".encode())
             f.write(f"</div>".encode())
-        f.write(
-            f'<div style="margin-top:8px"><img style="width: 75px" src="secret.gif" /></div></body></html>'.encode()
-        )
+    else:
+        f.write(f"<h1>No files added to navigation page</h1>".encode())
+    f.write(
+        f'<div style="margin-top:8px"><img style="width: 75px" src="secret.gif" /></div></body></html>'.encode()
+    )
+
     print(
         f"==> Generated nav.html file ({len(nav_files.items())} {'item' if len(nav_files.items()) == 1 else 'items'}, {os.path.getsize('./www/nav.html')} bytes)"
     )
-
 e = 0
 if nav_status["failure"] > 0 and nav_status["success"] < nav_status["failure"]:
     e = 1
