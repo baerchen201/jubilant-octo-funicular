@@ -22,12 +22,19 @@ jobs:
       - name: Download repository
         uses: actions/checkout@v4
 
+      - name: Install dependencies
+        run: |
+          echo "Installing typescript and sass from npm..."
+          npm i -g typescript sass
+
+          echo "Installing openssl and python3 from apt..."
+          sudo apt update
+          sudo apt install -y openssl python3
+
       - name: Build TypeScript
         run: tsc -p "./www/tsconfig.json"
       - name: Process SASS
-        run: |
-          npm i -g sass
-          sass ./www
+        run: sass ./www
       - name: Decrypt secret gif
         run: openssl enc -aes-256-cbc -d -in "./www/secret.gif.bin" -out "./www/secret.gif" -nosalt -K "${{ secrets.SECRET_KEY }}" -iv "${{ secrets.SECRET_IV }}"
       - name: Run custom build script
