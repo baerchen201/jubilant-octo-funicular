@@ -10,7 +10,7 @@ $background: light-dark(#eee, #111);
 body {
   background: $background;
 
-  div {
+  > * {
     color: $title-color;
 
     a {
