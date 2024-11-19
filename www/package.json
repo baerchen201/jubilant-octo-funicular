@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "useragent": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/useragent": "^2.3.4"
+  }
+}
