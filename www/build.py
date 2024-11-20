@@ -1,8 +1,16 @@
 import os
 import shutil
+import sys
+
+from html import escape as html_escape
+
+if sys.argv[-1] != "":
+    with open("./www/commit.html", "wb") as f:
+        f.write(
+            f'<html><head><title>Latest deployment</title><link rel="stylesheet" href="global.css" /></head><body>{html_escape(sys.argv[-1])}</body></html>'
+        )
 
 from html.parser import HTMLParser
-from html import escape as html_escape
 
 
 class NavHTMLParser(HTMLParser):

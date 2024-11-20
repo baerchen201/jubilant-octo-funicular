@@ -38,7 +38,7 @@ jobs:
       - name: Decrypt secret gif
         run: openssl enc -aes-256-cbc -d -in "./www/secret.gif.bin" -out "./www/secret.gif" -nosalt -K "${{ secrets.SECRET_KEY }}" -iv "${{ secrets.SECRET_IV }}"
       - name: Run custom build script
-        run: python3 "www/build.py"
+        run: python3 "www/build.py" "${{ github.sha }}"
 
       - name: Compress & Upload pages artifact
         uses: actions/upload-pages-artifact@v3
