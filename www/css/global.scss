@@ -28,7 +28,7 @@ body {
     border-radius: 3px;
     background: $button-background;
     &:hover {
-      color: $link-color-hover;
+      @extend a, :hover;
     }
   }
 }
