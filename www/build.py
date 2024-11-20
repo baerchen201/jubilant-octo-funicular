@@ -6,7 +6,7 @@ from html import escape as html_escape
 import requests
 
 if sys.argv[-1] != "":
-    data = "Hello, World!"
+    data = "No data available"
     try:
         response = requests.get(
             f"https://api.github.com/repos/{sys.argv[-3]}/commits/{sys.argv[-2]}",
@@ -16,9 +16,14 @@ if sys.argv[-1] != "":
                 "X-GitHub-Api-Version": "2022-11-28",
             },
         )
-        data = html_escape(response.text)
+        data = html_escape(
+            f"{response.json()['sha']}\n{response.json()['committer']['name']}\n{response.json()['committer']['date']}"
+        ).replace("\n", "<br />")
     except Exception as e:
-        print(type(e).__name, e, sep=": ")
+        etype = type(e).__name__
+        print(etype, e, sep=": ")
+        data += f" (An unexpected {etype}{'' if 'error' in etype.lower() or 'exception' in etype.lower() else ' exception'} occurred{': ' + str(e) if str(e) else ''})"
+
     with open("./www/commit.html", "wb") as f:
         f.write(
             f'<html><head><title>Latest deployment</title><link rel="stylesheet" href="css/global.css" /></head><body style="font-size: 40px" >{data}</body></html>'.encode()
