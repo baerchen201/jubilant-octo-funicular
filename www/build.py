@@ -36,6 +36,7 @@ if sys.argv[-1] != "":
                     f"<a {committer_url} ><div id=\"author\" >{commit_data['committer']['name']}</div></a>"
                     f"<div id=\"date\" >{commit_data['committer']['date']}</div>"
                     f"<div id=\"text\" >{commit_data['message'].splitlines()[0]}</div>"
+                    '<a href="nav.html" id="return">&lt; back</a>'
                     '<script src="ts/version.js" ></script>'
                 )
     except Exception as e:
