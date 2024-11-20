@@ -29,7 +29,7 @@ jobs:
 
           echo "Installing openssl and python3 from apt..."
           sudo apt update
-          sudo apt install -y openssl python3
+          sudo apt install -y openssl python3 python3-requests
 
       - name: Build TypeScript
         run: tsc -p "./www/tsconfig.json"
@@ -38,7 +38,7 @@ jobs:
       - name: Decrypt secret gif
         run: openssl enc -aes-256-cbc -d -in "./www/secret.gif.bin" -out "./www/secret.gif" -nosalt -K "${{ secrets.SECRET_KEY }}" -iv "${{ secrets.SECRET_IV }}"
       - name: Run custom build script
-        run: python3 "www/build.py" "${{ github.sha }}"
+        run: python3 "www/build.py" "${{ github.repository }}" "${{ github.sha }}" "${{ github.token }}"
 
       - name: Compress & Upload pages artifact
         uses: actions/upload-pages-artifact@v3

@@ -3,11 +3,25 @@ import shutil
 import sys
 
 from html import escape as html_escape
+import requests
 
 if sys.argv[-1] != "":
+    data = "Hello, World!"
+    try:
+        response = requests.get(
+            f"https://api.github.com/repos/{sys.argv[-3]}/commits/{sys.argv[-2]}",
+            headers={
+                "Accept": "application/vnd.github+json",
+                "Authorization": f"Bearer {sys.argv[-1]}",
+                "X-GitHub-Api-Version": "2022-11-28",
+            },
+        )
+        data = html_escape(response.text)
+    except Exception as e:
+        print(type(e).__name, e, sep=": ")
     with open("./www/commit.html", "wb") as f:
         f.write(
-            f'<html><head><title>Latest deployment</title><link rel="stylesheet" href="css/global.css" /></head><body style="font-size: 40px" >{html_escape(sys.argv[-1])}</body></html>'.encode()
+            f'<html><head><title>Latest deployment</title><link rel="stylesheet" href="css/global.css" /></head><body style="font-size: 40px" >{data}</body></html>'.encode()
         )
 
 from html.parser import HTMLParser
