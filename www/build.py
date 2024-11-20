@@ -89,7 +89,7 @@ for dir, subdirs, files in os.walk("./www"):
 
 with open("./www/nav.html", "wb") as f:
     f.write(
-        '<html><head><title>Navigation</title><link rel="stylesheet" href="css/nav.css" /></head><body>'.encode()
+        '<html><head><title>Navigation</title><link rel="stylesheet" href="css/global.css" /></head><body>'.encode()
     )
     if nav_files:
         for file, title in nav_files.items():
