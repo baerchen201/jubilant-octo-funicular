@@ -98,7 +98,7 @@ with open("./www/nav.html", "wb") as f:
                 f.write(f"&#58; {html_escape(title)}".encode())
             f.write(f"</div>".encode())
     else:
-        f.write(f"<h1>No files added to navigation page</h1>".encode())
+        f.write(f"<h1>Hello, World!</h1>".encode())
     f.write(
         f'<div style="margin-top:8px"><img style="width: 75px" src="secret.gif" /></div></body></html>'.encode()
     )
