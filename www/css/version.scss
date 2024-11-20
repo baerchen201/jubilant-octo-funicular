@@ -1,0 +1,17 @@
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+#sha::before {
+  content: "commit ";
+}
+#author::before {
+  content: "author ";
+}
+#date::before {
+  content: "created ";
+}
+#text {
+  margin-top: 16px;
+}

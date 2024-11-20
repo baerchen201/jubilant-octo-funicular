@@ -28,10 +28,12 @@ if sys.argv[-1] != "":
                     "message": "",
                 } | json.get("commit")
                 data = (
+                    '<link rel="stylesheet" href="css/version.css" />'
                     f"<div id=\"sha\" >{json.get('sha')}</div>"
                     f"<div id=\"author\" >{commit_data['committer']['name']}</div>"
                     f"<div id=\"date\" >{commit_data['committer']['date']}</div>"
                     f"<div id=\"text\" >{commit_data['message'].splitlines()[0]}</div>"
+                    '<script src="ts/version.js" ></script>'
                 )
     except Exception as e:
         etype = type(e).__name__
@@ -40,7 +42,7 @@ if sys.argv[-1] != "":
 
     with open("./www/version.html", "wb") as f:
         f.write(
-            f'<html><head><title>Latest deployment</title><link rel="stylesheet" href="css/global.css" /></head><body style="font-size: 40px;display: flex;flex-direction: column" >{data}</body></html>'.encode()
+            f'<html><head><title>Latest deployment</title><link rel="stylesheet" href="css/global.css" /></head><body style="font-size: 40px" >{data}</body></html>'.encode()
         )
 
 from html.parser import HTMLParser
