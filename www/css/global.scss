@@ -1,6 +1,8 @@
 $link-color: light-dark(#e00, #b00);
 $link-color-hover: light-dark(#f66, #d22);
 $title-color: light-dark(#222, #aaa);
+$button-color: light-dark(#000, #fff);
+$button-background: light-dark(#bbb, #333);
 $background: light-dark(#eee, #111);
 
 :root {
@@ -12,12 +14,23 @@ body {
 
   > * {
     color: $title-color;
+  }
 
-    a {
-      color: $link-color;
-      &:hover {
-        color: $link-color-hover;
-      }
+  a {
+    color: $link-color;
+    &:hover {
+      color: $link-color-hover;
+    }
+  }
+
+  button {
+    color: $button-color;
+    cursor: pointer;
+    border: 1px solid #666;
+    border-radius: 3px;
+    background: $button-background;
+    &:hover {
+      color: $link-color-hover;
     }
   }
 }
