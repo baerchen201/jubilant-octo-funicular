@@ -5,6 +5,10 @@ body {
   flex-direction: column;
   user-select: none;
 
+  > * {
+    width: fit-content;
+  }
+
   > div {
     display: flex;
     flex-direction: row;
@@ -21,6 +25,10 @@ body {
         }
       }
     }
+  }
+
+  > a:not([href]) {
+    color: inherit;
   }
 }
 
