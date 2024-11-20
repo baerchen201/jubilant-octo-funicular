@@ -28,11 +28,12 @@ if sys.argv[-1] != "":
                     "message": "",
                 } | json.get("commit")
                 committer_url = json.get("committer", {}).get("html_url", "")
+                committer_url = f'href="{committer_url}"' if committer_url else ""
                 data = (
                     '<meta name="nav-title" content="Version Information" />'
                     '<link rel="stylesheet" href="css/version.css" />'
                     f"<div><a href=\"https://github.com/{sys.argv[-3]}/commit/{json.get('sha')}\" ><div id=\"sha\" >{json.get('sha')}</div></a></div>"
-                    f"<a {f'href="{committer_url}"' if committer_url else ''} ><div id=\"author\" >{commit_data['committer']['name']}</div></a>"
+                    f"<a {committer_url} ><div id=\"author\" >{commit_data['committer']['name']}</div></a>"
                     f"<div id=\"date\" >{commit_data['committer']['date']}</div>"
                     f"<div id=\"text\" >{commit_data['message'].splitlines()[0]}</div>"
                     '<script src="ts/version.js" ></script>'
