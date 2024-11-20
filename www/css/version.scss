@@ -1,6 +1,27 @@
+@use "variables";
+
 body {
   display: flex;
   flex-direction: column;
+  user-select: none;
+
+  > div {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+
+    > span {
+      cursor: pointer;
+      align-self: center;
+      svg {
+        height: 40px;
+        fill: variables.$link-color;
+        &:hover {
+          fill: variables.$link-color-hover;
+        }
+      }
+    }
+  }
 }
 
 #sha::before {

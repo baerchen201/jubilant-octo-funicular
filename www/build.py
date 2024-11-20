@@ -28,8 +28,9 @@ if sys.argv[-1] != "":
                     "message": "",
                 } | json.get("commit")
                 data = (
+                    '<meta name="nav-title" content="Version Information" />'
                     '<link rel="stylesheet" href="css/version.css" />'
-                    f"<div id=\"sha\" >{json.get('sha')}</div>"
+                    f"<div><a href=\"https://github.com/{sys.argv[-3]}/commit/{json.get('sha')}\" ><div id=\"sha\" >{json.get('sha')}</div></a></div>"
                     f"<div id=\"author\" >{commit_data['committer']['name']}</div>"
                     f"<div id=\"date\" >{commit_data['committer']['date']}</div>"
                     f"<div id=\"text\" >{commit_data['message'].splitlines()[0]}</div>"
