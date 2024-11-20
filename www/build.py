@@ -16,17 +16,31 @@ if sys.argv[-1] != "":
                 "X-GitHub-Api-Version": "2022-11-28",
             },
         )
-        data = html_escape(
-            f"{response.json()['sha']}\n{response.json()['commit']['committer']['name']}\n{response.json()['commit']['committer']['date']}\n{response.json()['commit']['message'].splitlines()[0]}"
-        ).replace("\n", "<br />")
+        if response.status_code != 200:
+            data += f" (HTTP Response {response.status_code} {response.reason}, expected 200 OK)"
+        else:
+            json = response.json()
+            if not "sha" in json:
+                data += " (Invalid response)"
+            else:
+                commit_data = {
+                    "committer": {"name": "", "date": ""},
+                    "message": "",
+                } | json.get("commit")
+                data = (
+                    f"<div id=\"sha\" >{json.get('sha')}</div>"
+                    f"<div id=\"author\" >{commit_data['committer']['name']}</div>"
+                    f"<div id=\"date\" >{commit_data['committer']['date']}</div>"
+                    f"<div id=\"text\" >{commit_data['message'].splitlines()[0]}</div>"
+                )
     except Exception as e:
         etype = type(e).__name__
         print(etype, e, sep=": ")
         data += f" (An unexpected {etype}{'' if 'error' in etype.lower() or 'exception' in etype.lower() else ' exception'} occurred{': ' + str(e) if str(e) else ''})"
 
-    with open("./www/commit.html", "wb") as f:
+    with open("./www/version.html", "wb") as f:
         f.write(
-            f'<html><head><title>Latest deployment</title><link rel="stylesheet" href="css/global.css" /></head><body style="font-size: 40px" >{data}</body></html>'.encode()
+            f'<html><head><title>Latest deployment</title><link rel="stylesheet" href="css/global.css" /></head><body style="font-size: 40px;display: flex;flex-direction: column" >{data}</body></html>'.encode()
         )
 
 from html.parser import HTMLParser
