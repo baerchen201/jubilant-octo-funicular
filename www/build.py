@@ -17,7 +17,7 @@ if sys.argv[-1] != "":
             },
         )
         data = html_escape(
-            f"{response.json()['sha']}\n{response.json()['committer']['name']}\n{response.json()['committer']['date']}"
+            f"{response.json()['sha']}\n{response.json()['commit']['committer']['name']}\n{response.json()['commit']['committer']['date']}\n{response.json()['commit']['message'].splitlines()[0]}"
         ).replace("\n", "<br />")
     except Exception as e:
         etype = type(e).__name__
