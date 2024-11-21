@@ -106,7 +106,12 @@ with open("./www/discord-css.html", "wb") as f:
                     au += 1
                 f.write("<br />".encode())
 
-                os.rename(os.path.join(dir, file), os.path.join("./www/css/", file))
+                try:
+                    os.rename(os.path.join(dir, file), os.path.join("./www/css/", file))
+                except (FileExistsError, IsADirectoryError, NotADirectoryError):
+                    print(
+                        f"     > File {os.path.join('css/', file)} already exists, not overwriting"
+                    )
 
     f.write("</body></html>".encode())
 
