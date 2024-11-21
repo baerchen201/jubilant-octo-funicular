@@ -50,6 +50,7 @@ if sys.argv[-1] != "":
         )
 
 from urllib.parse import quote as url_escape
+import re
 
 print("==> Generating discord-css list")
 with open("./www/discord-css.html", "wb") as f:
@@ -68,36 +69,42 @@ with open("./www/discord-css.html", "wb") as f:
                 )
 
                 with open(os.path.join(dir, file), "rb") as source:
-                    css = source.read().decode()
-                    if css.strip().startswith("/**"):
-                        print("     > Generating AutoUpdater...")
-                        with open(
-                            os.path.join(
-                                "./www/css/",
-                                file.removesuffix(".css") + ".autoupdater.css",
-                            ),
-                            "wb",
-                        ) as u:
-                            u.write(
-                                (
-                                    css.split("*/")[0] + "*/\n"
-                                    f"@import url(https://baerchen201.github.io/jubilant-octo-funicular/css/{file})"
-                                ).encode()
-                            )
-                        _ = url_escape(
-                            os.path.join(
-                                "css/",
-                                file.removesuffix(".css") + ".autoupdater.css",
+                    properties = (
+                        {"name": file}
+                        | dict(
+                            re.findall(
+                                r"^ \* @(\S+) (.+)$",
+                                source.read().decode(),
+                                re.MULTILINE,
                             )
                         )
-                        f.write(
-                            f'<a href="{_}" download="{file}" style="font-size: 0.6em" >AutoUpdate</a>'.encode()
+                        | {"version": "latest"}
+                    )
+                    print("     > Generating AutoUpdater...")
+                    with open(
+                        os.path.join(
+                            "./www/css/",
+                            file.removesuffix(".css") + ".autoupdater.css",
+                        ),
+                        "wb",
+                    ) as u:
+                        u.write(
+                            (
+                                f"/**\n{'\n'.join([' * @'+k+' '+v for k,v in properties.items()])}\n */"
+                                f"@import url(https://baerchen201.github.io/jubilant-octo-funicular/css/{file})"
+                            ).encode()
                         )
-                        au += 1
-
-                    else:
-                        print("     > Invalid format, not generating AutoUpdater")
-                    f.write("<br />".encode())
+                    _ = url_escape(
+                        os.path.join(
+                            "css/",
+                            file.removesuffix(".css") + ".autoupdater.css",
+                        )
+                    )
+                    f.write(
+                        f'<a href="{_}" download="{file}" style="font-size: 0.6em" >AutoUpdate</a>'.encode()
+                    )
+                    au += 1
+                f.write("<br />".encode())
 
                 os.rename(os.path.join(dir, file), os.path.join("./www/css/", file))
 
