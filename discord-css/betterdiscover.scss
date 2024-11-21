@@ -1,0 +1,28 @@
+/**
+ * @name Better Server Discovery
+ * @author baer1
+ * @description Removes clutter from the Server Discovery list
+ * @version 0.0.1
+ */
+
+.sidebar_a4d4d9:has(.nav_e462a4) {
+  // Hide sidebar (nobody needs quests)
+  display: none;
+
+  // If sidebar fits discover layout, apply other changes using ~
+  & ~ .container_d746e5 {
+    // Force background on top bar
+    & .backdrop_accde0 {
+      opacity: 1 !important;
+    }
+    // Remove big title
+    & .container_b97772:has(.gradientBackground_b97772) {
+      display: none;
+
+      // Manually pad content (originally done by the banner)
+      & ~ .contentSection_a56260 {
+        padding-top: 60px;
+      }
+    }
+  }
+}
