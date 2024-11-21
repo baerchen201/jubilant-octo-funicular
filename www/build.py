@@ -90,7 +90,7 @@ with open("./www/discord-css.html", "wb") as f:
                     ) as u:
                         u.write(
                             (
-                                f"/**\n{chr(10).join([' * @'+k+' '+v for k,v in properties.items()])}\n */"
+                                f"/**\n{chr(10).join([' * @'+k+' '+v for k,v in properties.items()])}\n */\n"
                                 f"@import url(https://baerchen201.github.io/jubilant-octo-funicular/css/{file})"
                             ).encode()
                         )
