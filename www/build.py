@@ -84,11 +84,14 @@ with open("./www/discord-css.html", "wb") as f:
                                     f"@import url(https://baerchen201.github.io/jubilant-octo-funicular/css/{file})"
                                 ).encode()
                             )
-                        f.write(
-                            f'<a href="{url_escape(os.path.join(
+                        _ = url_escape(
+                            os.path.join(
                                 "css/",
                                 file.removesuffix(".css") + ".autoupdater.css",
-                            ))}" download style="font-size: 0.6em" >AutoUpdate</a>'.encode()
+                            )
+                        )
+                        f.write(
+                            f'<a href="{_}" download="{file}" style="font-size: 0.6em" >AutoUpdate</a>'.encode()
                         )
                         au += 1
 
