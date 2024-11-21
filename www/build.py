@@ -51,18 +51,53 @@ if sys.argv[-1] != "":
 
 from urllib.parse import quote as url_escape
 
+print("==> Generating discord-css list")
 with open("./www/discord-css.html", "wb") as f:
     f.write(
         '<html><head><title>Discord CSS collection</title><meta name="nav-title" content="Discord CSS collection" /><link rel="stylesheet" href="css/global.css" /></head><body><h2 style="text-decoration: underline 0.1px" >Discord Themes for Vencord</h2>'.encode()
     )
+    t = 0
+    au = 0
     for dir, subdirs, files in os.walk("./discord-css"):
         for file in files:
             if file.endswith(".css"):
-                os.rename(os.path.join(dir, file), os.path.join("./www/css/", file))
+                print(f"  -> Found css file {os.path.join(dir, file)}, processing...")
+                t += 1
                 f.write(
                     f'<a href="{url_escape(os.path.join("css/", file))}" download >{html_escape(file)}</a>'.encode()
                 )
+
+                with open(os.path.join(dir, file), "rb") as source:
+                    css = source.read().decode()
+                    if css.strip().startswith("/**"):
+                        print("     > Generating AutoUpdater...")
+                        with open(
+                            os.path.join(
+                                "./www/css/",
+                                file.removesuffix(".css") + ".autoupdater.css",
+                            ),
+                            "wb",
+                        ) as u:
+                            u.write(
+                                (
+                                    css.split("*/")[0] + "*/\n"
+                                    f"@import url(https://baerchen201.github.io/jubilant-octo-funicular/css/{file})"
+                                ).encode()
+                            )
+                        au += 1
+                    else:
+                        print("     > Invalid format, not generating AutoUpdater")
+
+                os.rename(os.path.join(dir, file), os.path.join("./www/css/", file))
+
     f.write("</body></html>".encode())
+
+    if t:
+        print(
+            f"==> Processed discord-css, processed {t} file{'' if t == 1 else 's'}{f', generated {au} autoupdater{str() if au==1 else chr(115)}' if au else ''}"
+        )
+    else:
+        print("==> No css files found to process")
 
 from html.parser import HTMLParser
 
