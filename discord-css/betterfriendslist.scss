@@ -2,7 +2,7 @@
  * @name Better Friends List
  * @author baer1
  * @description Removes clutter from the DM list
- * @version 0.0.1
+ * @version 0.0.2
  */
 
 ul.content_eed6a8 {
@@ -13,7 +13,7 @@ ul.content_eed6a8 {
   }
 
   // Hide delete button (right click > leave group or right click > close dm)
-  div.closeButton_c91bad {
+  *[role="button"].closeButton_c91bad {
     display: none;
   }
 }
