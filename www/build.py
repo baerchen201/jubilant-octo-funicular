@@ -64,7 +64,7 @@ with open("./www/discord-css.html", "wb") as f:
                 print(f"  -> Found css file {os.path.join(dir, file)}, processing...")
                 t += 1
                 f.write(
-                    f'<a href="{url_escape(os.path.join("css/", file))}" download >{html_escape(file)}</a>'.encode()
+                    f'<a href="{url_escape(os.path.join("css/", file))}" download style="margin-right: 7px" >{html_escape(file)}</a>'.encode()
                 )
 
                 with open(os.path.join(dir, file), "rb") as source:
@@ -84,9 +84,17 @@ with open("./www/discord-css.html", "wb") as f:
                                     f"@import url(https://baerchen201.github.io/jubilant-octo-funicular/css/{file})"
                                 ).encode()
                             )
+                        f.write(
+                            f'<a href="{url_escape(os.path.join(
+                                "css/",
+                                file.removesuffix(".css") + ".autoupdater.css",
+                            ))}" download style="font-size: 0.6em" >AutoUpdate</a>'.encode()
+                        )
                         au += 1
+
                     else:
                         print("     > Invalid format, not generating AutoUpdater")
+                    f.write("<br />".encode())
 
                 os.rename(os.path.join(dir, file), os.path.join("./www/css/", file))
 
