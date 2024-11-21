@@ -32,7 +32,7 @@ jobs:
           sudo apt install -y openssl python3 python3-requests
 
       - name: Build TypeScript
-        run: tsc -p "./www/tsconfig.json"
+        run: tsc -p "./tsconfig.json"
         working-directory: www
       - name: Process SASS
         run: sass .
