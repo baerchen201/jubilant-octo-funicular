@@ -6,6 +6,7 @@ on:
     paths:
       - ".github/workflows/deploy-pages.yml"
       - "www/**"
+      - "discord-css/**"
   workflow_dispatch:
 
 permissions:
