@@ -1,14 +1,18 @@
-ul[aria-label="Direct Messages"],
+/**
+ * @name Better Friends List
+ * @author baer1
+ * @description Removes clutter from the DM list
+ * @version 0.0.1
+ */
+
 ul.content_eed6a8 {
   // Hide Nitro and Shop tabs
-  > li:nth-of-type(1),
-  > li:nth-of-type(2) {
+  > *:nth-child(3),
+  > *:nth-child(4) {
     display: none;
   }
 
   // Hide delete button (right click > leave group or right click > close dm)
-  div[role="button"][aria-label="Leave Group"],
-  div[role="button"][aria-label="Close DM"],
   div.closeButton_c91bad {
     display: none;
   }
