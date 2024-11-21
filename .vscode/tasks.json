@@ -8,6 +8,7 @@
       "problemMatcher": ["$tsc-watch"],
       "group": "build",
       "label": "tsc",
+      "options": { "cwd": "www" },
       "runOptions": { "runOn": "folderOpen" },
       "presentation": {
         "reveal": "never"
@@ -15,7 +16,7 @@
     },
     {
       "type": "shell",
-      "command": "sass --watch www",
+      "command": "sass --watch .",
       "group": "build",
       "label": "sass",
       "runOptions": { "runOn": "folderOpen" },

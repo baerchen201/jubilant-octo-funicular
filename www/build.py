@@ -49,6 +49,21 @@ if sys.argv[-1] != "":
             f'<html><head><title>Latest deployment</title><link rel="stylesheet" href="css/global.css" /></head><body style="font-size: 40px" >{data}</body></html>'.encode()
         )
 
+from urllib.parse import quote as url_escape
+
+with open("./www/discord-css.html", "wb") as f:
+    f.write(
+        '<html><head><title>Discord CSS collection</title><meta name="nav-title" content="Discord CSS collection" /><link rel="stylesheet" href="css/global.css" /></head><body><h2 style="text-decoration: underline 0.1px" >Discord Themes for Vencord</h2>'.encode()
+    )
+    for dir, subdirs, files in os.walk("./discord-css"):
+        for file in files:
+            if file.endswith(".css"):
+                os.rename(os.path.join(dir, file), os.path.join("./www/css/", file))
+                f.write(
+                    f'<a href="{url_escape(os.path.join("css/", file))}" download >{html_escape(file)}</a>'
+                )
+    f.write("</body></html>".encode())
+
 from html.parser import HTMLParser
 
 
@@ -103,7 +118,7 @@ for dir, subdirs, files in os.walk("./www"):
                 print(f"     > Removed file {file}")
 
     for file in files:
-        if file.startswith(".") or file.endswith(".ts"):
+        if file.startswith(".") or file.endswith(".ts") or file.endswith(".scss"):
             os.remove(os.path.join(dir, file))
             print(f"  > Removed file {os.path.join(dir, file)}")
             continue
@@ -140,7 +155,9 @@ with open("./www/nav.html", "wb") as f:
     )
     if nav_files:
         for file, title in nav_files.items():
-            f.write(f'<div><a href="{file}">{html_escape(file)}</a>'.encode())
+            f.write(
+                f'<div><a href="{url_escape(file)}">{html_escape(file)}</a>'.encode()
+            )
             if title:
                 f.write(f"&#58; {html_escape(title)}".encode())
             f.write(f"</div>".encode())
@@ -153,9 +170,7 @@ with open("./www/nav.html", "wb") as f:
     print(
         f"==> Generated nav.html file ({len(nav_files.items())} {'item' if len(nav_files.items()) == 1 else 'items'}, {os.path.getsize('./www/nav.html')} bytes)"
     )
-e = 0
-if nav_status["failure"] > 0 and nav_status["success"] < nav_status["failure"]:
-    e = 1
+e = min(1, max(0, nav_status["failure"]))
 
 
 os.remove(__file__)
