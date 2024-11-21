@@ -60,7 +60,7 @@ with open("./www/discord-css.html", "wb") as f:
             if file.endswith(".css"):
                 os.rename(os.path.join(dir, file), os.path.join("./www/css/", file))
                 f.write(
-                    f'<a href="{url_escape(os.path.join("css/", file))}" download >{html_escape(file)}</a>'
+                    f'<a href="{url_escape(os.path.join("css/", file))}" download >{html_escape(file)}</a>'.encode()
                 )
     f.write("</body></html>".encode())
 
