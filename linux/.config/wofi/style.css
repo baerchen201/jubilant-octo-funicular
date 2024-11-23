@@ -1,0 +1,10 @@
+#window {
+	background: none;
+}
+#outer-box {
+	background: rgba(0, 0, 0, 0.87);
+}
+
+#input {
+	border-radius: 4px 4px 0 0;
+}

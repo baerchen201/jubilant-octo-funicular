@@ -1,0 +1,11 @@
+Firefox|firefox
+Alacritty (Terminal Emulator)|alacritty|SHLVL=0 alacritty
+Thunar (File Manager)|thunar
+VLC Media Player|vlc
+Discord|discord
+GNU Image Manipulation Program|gimp
+Neovim|nvim|alacritty -e nvim
+Take screenshot|grim|sleep 0.5; grim - | wl-copy
+Audio settings|pavucontrol
+Show all Applications|wofi --show drun -np "Search applications" -O alphabetical
+Show all commands|wofi --show run -np "Search commands" -O alphabetical
