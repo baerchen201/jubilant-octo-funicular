@@ -5,7 +5,9 @@ VLC Media Player|vlc
 Discord|discord
 GNU Image Manipulation Program|gimp
 Neovim|nvim|alacritty -e nvim
+osu!lazer|osu|/usr/local/bin/osu
 Take screenshot|grim|sleep 0.5; grim - | wl-copy
 Audio settings|pavucontrol
+Tablet settings|opentabletdriver|otd-gui
 Show all Applications|wofi --show drun -np "Search applications" -O alphabetical
 Show all commands|wofi --show run -np "Search commands" -O alphabetical
