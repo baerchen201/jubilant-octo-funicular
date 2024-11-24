@@ -6,6 +6,8 @@ Discord|discord
 GNU Image Manipulation Program|gimp
 Neovim|nvim|alacritty -e nvim
 osu!lazer|osu|/usr/local/bin/osu
+Steam|steam
+OBS Studio|obs
 Take screenshot|grim|sleep 0.5; grim - | wl-copy
 Audio settings|pavucontrol
 Tablet settings|opentabletdriver|otd-gui
