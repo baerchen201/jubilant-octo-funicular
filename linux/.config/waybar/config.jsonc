@@ -55,6 +55,8 @@
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠"
     },
+    
+    // Use pipewire + pipewire-pulse instead of pulseaudio
     "pulseaudio": {
         "scroll-step": 5,
         "format": "{volume}% {icon} {format_source}",
