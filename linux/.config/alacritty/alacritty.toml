@@ -1,10 +1,11 @@
 [window]
-blur=true
+blur=true # for good measure, its blurred by hyptland anyways
 opacity=0.87
 
 [colors.primary]
 background="#000000"
 
+# TTY colors
 [colors.normal]
 black="#000000"
 red="#aa0000"
