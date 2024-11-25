@@ -1,0 +1,6 @@
+<Files "download*.sh" >
+	Require all denied
+</Files>
+<Files "convert*.py" >
+	Require all denied
+</Files>
