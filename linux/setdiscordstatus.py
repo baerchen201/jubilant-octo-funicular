@@ -15,7 +15,7 @@ argparser.add_argument(
 argparser.add_argument(
     "tokens",
     help="The tokens to apply the changes to. If none specified the script will attempt to scrape any local installs for tokens",
-    nargs="*"
+    nargs="*",
 )
 args = argparser.parse_args()
 
