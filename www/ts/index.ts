@@ -2,5 +2,5 @@
   "click",
   function func(): void {
     window.alert("Hello, World!");
-  },
+  }
 );

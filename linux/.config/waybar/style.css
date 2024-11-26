@@ -1,23 +1,22 @@
 * {
-  /* `otf-font-awesome` is required to be installed for icons */
-  font-family: FontAwesome, Ubuntu, Roboto, Helvetica, system-ui, monospace,
-    sans-serif;
-  font-size: 13px;
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: FontAwesome, Ubuntu, Roboto, Helvetica, system-ui, monospace, sans-serif;
+    font-size: 13px;
 }
 
 window#waybar {
-  background-color: rgba(0, 0, 0, 0.87);
-  border-bottom: 3px solid rgba(0, 0, 0, 0.92);
-  color: #ffffff;
-  transition: background-color 0.5s;
+    background-color: rgba(0, 0, 0, 0.87);
+    border-bottom: 3px solid rgba(0, 0, 0, 0.92);
+    color: #ffffff;
+    transition: background-color .5s;
 }
 
 window#waybar.hidden {
-  opacity: 0.2;
+    opacity: 0.2;
 }
 
 .module {
-  border-radius: 40px;
+    border-radius: 40px;
 }
 
 #clock,
@@ -26,53 +25,54 @@ window#waybar.hidden {
 #temperature,
 #network,
 #pulseaudio {
-  padding: 0 12px;
-  color: #ffffff;
+    padding: 0 12px;
+    color: #ffffff;
 }
 
 #window {
-  margin: 0 4px;
+    margin: 0 4px;
 }
 
 #clock {
-  background-color: #64727d;
+    background-color: #64727D;
 }
 
 label:focus {
-  background-color: #000000;
+    background-color: #000000;
 }
 
 #cpu {
-  background-color: #2ecc71;
-  color: #000000;
+    background-color: #2ecc71;
+    color: #000000;
 }
 
 #memory {
-  background-color: #9b59b6;
+    background-color: #9b59b6;
 }
 
 #network {
-  background-color: #2980b9;
+    background-color: #2980b9;
 }
 
 #network.disconnected {
-  background-color: #f53c3c;
+    background-color: #f53c3c;
 }
 
 #pulseaudio {
-  background-color: #f1c40f;
-  color: #000000;
+    background-color: #f1c40f;
+    color: #000000;
 }
 
 #pulseaudio.muted {
-  background-color: #90b1b1;
-  color: #2a5c45;
+    background-color: #90b1b1;
+    color: #2a5c45;
 }
 
 #temperature {
-  background-color: #f0932b;
+    background-color: #f0932b;
 }
 
 #temperature.critical {
-  background-color: #eb4d4b;
+    background-color: #eb4d4b;
 }
+
