@@ -6,7 +6,6 @@ on:
 
 permissions:
   contents: write
-  workflow:
 
 concurrency:
   group: ${{ github.workflow }}
@@ -37,8 +36,10 @@ jobs:
 
       - name: Commit and push changes if any
         run: |
+          #!/bin/bash
+          shopt -s extglob
           if [[ `git status --porcelain` ]]; then
-                    git add .
+                    git add !(.github)
                     git config --global user.name "GitHub Actions"
                     git config --global user.email "videocreator@outlook.de"
                     git commit -m "$(echo -e "Reformat code\n\nOriginal commit: ${{ github.sha }}\nThis is an automated task.\nIf you have questions or concerns about this task,\nplease contact the provided email.")"
