@@ -21,11 +21,13 @@ jobs:
           
           sudo apt install python3 black -y
 
-          sudo apt install nodejs npm -y
           sudo npm i -g prettier
+          
+          black --version
+          echo "prettier $(prettier --version)"
 
       - name: Format python using black
-        run: black . --target-version py312
+        run: black . --target-version py310
       - name: Format everything else using prettier
         run: prettier . -w
 
