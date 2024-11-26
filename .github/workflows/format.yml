@@ -25,7 +25,7 @@ jobs:
           sudo npm i -g prettier
 
       - name: Format python using black
-        run: black .
+        run: black . --target-version py312
       - name: Format everything else using prettier
         run: prettier . -w
 
