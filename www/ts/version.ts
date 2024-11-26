@@ -1,11 +1,11 @@
 let date_element: HTMLDivElement = document.getElementById(
-  "date"
+  "date",
 ) as HTMLDivElement;
 if (date_element.innerHTML)
   date_element.innerHTML = new Date(date_element.innerHTML).toLocaleString();
 
 let sha_element: HTMLDivElement = document.getElementById(
-    "sha"
+    "sha",
   ) as HTMLDivElement,
   clip_icon: HTMLElement = document.createElement("span");
 clip_icon.addEventListener("click", () => {
