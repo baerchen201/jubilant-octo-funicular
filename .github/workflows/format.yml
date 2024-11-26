@@ -36,7 +36,7 @@ jobs:
 
       - name: Commit and push changes if any
         run: |
-          if [[ `git status --porcelain` ]]; then
+          if [[ "$(git status --porcelain)" ]]; then
                     git add .
                     git config --global user.name "GitHub Actions"
                     git config --global user.email "videocreator@outlook.de"
