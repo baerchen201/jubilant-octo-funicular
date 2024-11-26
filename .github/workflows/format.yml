@@ -36,9 +36,12 @@ jobs:
 
       - name: Commit and push changes if any
         run: |
-         git add .
-         git config --global user.name "GitHub Actions"
-         git config --global user.email "videocreator@outlook.de"
-         git commit -m "$(echo -e "Reformat code\n\nOriginal commit: ${{ github.sha }}\nThis is an automated task.\nIf you have questions or concerns about this task,\nplease contact the provided email."
-         if [ $? = 0 ]; then git push; fi
-         exit 0
+          if [[ `git status --porcelain` ]]; then
+                    git add .
+                    git config --global user.name "GitHub Actions"
+                    git config --global user.email "videocreator@outlook.de"
+                    git commit -m "$(echo -e "Reformat code\n\nOriginal commit: ${{ github.sha }}\nThis is an automated task.\nIf you have questions or concerns about this task,\nplease contact the provided email.")"
+                    git push
+          else
+                    git status
+          fi
