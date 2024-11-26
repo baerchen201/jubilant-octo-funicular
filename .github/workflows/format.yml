@@ -21,11 +21,11 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt update
-          
+
           sudo apt install python3 black -y
 
           sudo npm i -g prettier
-          
+
           black --version
           echo "prettier $(prettier --version)"
 
@@ -38,7 +38,7 @@ jobs:
         run: |
           #!/bin/bash
           shopt -s extglob
-          if [[ `git status --porcelain` ]]; then
+          if [[ `git status !(.github) --porcelain` ]]; then
                     git add !(.github)
                     git config --global user.name "GitHub Actions"
                     git config --global user.email "github-actions[bot]@users.noreply.github.com"
