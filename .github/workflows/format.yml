@@ -1,0 +1,40 @@
+name: Reformat code
+
+on:
+  push:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt update
+          
+          sudo apt install python3 black -y
+
+          sudo apt install nodejs npm -y
+          sudo npm i -g prettier
+
+      - name: Format python using black
+        run: black .
+      - name: Format everything else using prettier
+        run: prettier . -w
+
+      - name: Commit and push changes if any
+        run: |
+          if [[ `git status --porcelain` ]]; then
+                    git add .
+                    git commit --author "GitHub Actions <videocreator@outlook.de>" -m "$(echo -e "Reformat code\n\n\nCo-authored-by: $(git log "${{ github.sha }}^..${{ github.sha }}" --pretty=format:'%an <%ae>')")"
+                    git push
+          else
+                    git status
+          fi
