@@ -4,6 +4,9 @@ on:
   push:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 concurrency:
   group: ${{ github.workflow }}
   cancel-in-progress: false
@@ -35,7 +38,9 @@ jobs:
         run: |
           if [[ `git status --porcelain` ]]; then
                     git add .
-                    git commit --author "GitHub Actions <videocreator@outlook.de>" -m "$(echo -e "Reformat code\n\n\nCo-authored-by: $(git log "${{ github.sha }}^..${{ github.sha }}" --pretty=format:'%an <%ae>')")"
+                    git config --global user.name "GitHub Actions"
+                    git config --global user.email "videocreator@outlook.de"
+                    git commit -m "$(echo -e "Reformat code\n\nOriginal commit: ${{ github.sha }}\nThis is an automated task.\nIf you have questions or concerns about this task,\nplease contact the provided email."
                     git push
           else
                     git status
