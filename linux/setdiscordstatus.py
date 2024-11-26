@@ -1,9 +1,10 @@
 import os
 import argparse
 import requests
-import re  # For error handling
+import re
 import base64
 import json
+from datetime import datetime, timedelta
 
 
 def exit(*args, **kwargs):
@@ -29,6 +30,20 @@ argparser.add_argument(
 )
 argparser.add_argument(
     "-t", help="The status text to set (removes custom status if empty)"
+)
+expire = argparser.add_mutually_exclusive_group()
+expire.add_argument(
+    "-e", help="The expiration date for the custom status (in ISO format)"
+)
+expire.add_argument(
+    "-E", help="The expiration date for the custom status (in UNIX seconds)"
+)
+expire.add_argument(
+    "-o",
+    help="The expiration date for the custom status (offset in seconds from the current time, can't be negative)",
+)
+argparser.add_argument(
+    "-O", help="The emoji to set (not validated, use at your own risk)"
 )
 argparser.add_argument(
     "-i", help="Includes tokens from local discord installations", action="store_true"
@@ -66,6 +81,35 @@ if args.t == "":
 elif args.t:
     data["custom_status"] = {"text": args.t}
 
+    e = None
+    if args.e:
+        try:
+            e = datetime.fromisoformat(args.e).isoformat()
+        except ValueError:
+            exit("Malformed ISO timestamp")
+    elif args.E:
+        try:
+            e = datetime.fromtimestamp(int(args.E)).isoformat()
+        except ValueError:
+            exit("Invalid timestamp")
+    elif args.o:
+        try:
+            e = (
+                datetime.now()
+                + timedelta(
+                    seconds=(
+                        int(args.o) if int(args.o) > 0 else exit("Negative time offset")
+                    )
+                )
+            ).isoformat()
+        except ValueError:
+            exit("Invalid time offset")
+
+    data["custom_status"]["expires_at"] = e
+
+    if args.O:
+        data["custom_status"]["emoji_name"] = args.O
+
 
 if not data and not args.d and not args.r:
     exit("No modifications")
@@ -84,6 +128,8 @@ for token in tokens:
             "content-type": "application/json",
             "user-agent": "setdiscordstatus.py (https://github.com/baerchen201/jubilant-octo-funicular/tree/main/linux/setdiscordstatus.py, contact https://baerchen201.github.io) via python-requests module",
         }
+        if args.D:
+            print(headers)
         userid = base64.b64decode(token.split(".")[0] + "==").decode()
 
         if args.d:
