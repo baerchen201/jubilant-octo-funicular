@@ -1,0 +1,4 @@
+Shut down|poweroff
+Reboot|reboot
+Exit Hyprland|hyprctl dispatch exit
+

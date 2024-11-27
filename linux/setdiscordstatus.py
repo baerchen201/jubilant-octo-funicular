@@ -116,7 +116,7 @@ if not data and not args.d and not args.r:
 
 store = {}
 if args.r:
-    with open(args.r, "rb") as f:
+    with open(os.path.expanduser(args.r), "rb") as f:
         store = json.loads(f.read().decode())
 
 for token in tokens:
@@ -169,5 +169,5 @@ for token in tokens:
         )
 
 if args.d:
-    with open(args.d, "wb") as f:
+    with open(os.path.expanduser(args.d), "wb") as f:
         f.write(json.dumps(store).encode())
