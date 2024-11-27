@@ -6,6 +6,6 @@ Wants=network-online.target
 [Service]
 Type=oneshot
 RemainAfterExit=true
-ExecStart=python3 /usr/local/bin/setdiscordstatus.py -id ~/.discordstatus.json -s idle -t afk
-ExecStop=python3 /usr/local/bin/setdiscordstatus.py -ir ~/.discordstatus.json
+ExecStart=python3 /usr/local/bin/setdiscordstatus.py -iSd ~/.discordstatus.json -s idle -t afk
+ExecStop=python3 /usr/local/bin/setdiscordstatus.py -iRr ~/.discordstatus.json
 
