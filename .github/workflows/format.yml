@@ -24,10 +24,7 @@ jobs:
 
           sudo apt install python3 black -y
 
-          sudo npm i -g prettier
-
-          black --version
-          echo "prettier $(prettier --version)"
+          sudo npm i # Prettier version and plugins should be specified in package.json
 
       - name: Format python using black
         run: black . --target-version py310
