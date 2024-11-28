@@ -36,7 +36,8 @@ jobs:
           #!/bin/bash
           shopt -s extglob
           if [[ `git status !(.github) --porcelain` ]]; then
-                    git add !(.github)
+                    git add .
+                    git restore --staged .github
                     git config --global user.name "GitHub Actions"
                     git config --global user.email "github-actions[bot]@users.noreply.github.com"
                     git commit -m "$(echo -e "Reformat code\n\nOriginal commit: ${{ github.sha }}\nThis is an automated task.\nIf you have questions or concerns about this task,\nplease contact the repository owner.")"
