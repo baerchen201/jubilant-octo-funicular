@@ -1,7 +1,7 @@
 import os
 import re
 
-for dir, subdirs, files in os.walk("."):
+for dir, subdirs, files in os.walk(os.path.dirname(__file__)):
     for file in files:
         if file.endswith(".php___format__.html"):
             with open(os.path.join(dir, file), "rb") as f:
