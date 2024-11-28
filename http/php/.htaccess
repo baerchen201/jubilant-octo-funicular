@@ -1,0 +1,3 @@
+<Files ".*format.py">
+	Require all denied
+</Files>
