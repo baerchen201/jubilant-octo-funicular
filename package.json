@@ -1,5 +1,7 @@
 {
-	"scripts": {"prettier":"prettier"},
+  "scripts": {
+    "prettier": "prettier"
+  },
   "devDependencies": {
     "@prettier/plugin-php": "^0.22.2",
     "prettier": "^3.4.1",
