@@ -10,6 +10,7 @@ osu!lazer|osu|/usr/local/bin/osu
 Steam|steam
 OBS Studio|obs
 VMWare Workstation Pro|vmware
+Calibre (eBook manager)|calibre
 Take screenshot|grim|sleep 0.5; grim - | wl-copy
 Audio settings|pavucontrol
 Tablet settings|opentabletdriver|otd-gui
