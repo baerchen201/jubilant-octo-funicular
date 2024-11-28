@@ -3,6 +3,7 @@ Alacritty (Terminal Emulator)|alacritty|SHLVL=0 alacritty
 Thunar (File Manager)|thunar
 VLC Media Player|vlc
 Discord|discord
+Telegram Messenger|telegram-desktop
 GNU Image Manipulation Program|gimp
 Neovim|nvim|alacritty -e nvim
 Thunderbird (E-Mail)|thunderbird
