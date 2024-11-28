@@ -28,8 +28,8 @@ jobs:
 
       - name: Format python using black
         run: black . --target-version py310
-      - name: Format everything else using prettier
-        run: prettier . -w
+      - name: Run prettier
+        run: npm run prettier -- . -w
 
       - name: Commit and push changes if any
         run: |
