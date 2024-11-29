@@ -7,6 +7,8 @@ on:
       - ".github/workflows/deploy-pages.yml"
       - "www/**"
       - "discord-css/**"
+      - "package.json"
+      - "package-lock.json"
   workflow_dispatch:
 
 permissions:

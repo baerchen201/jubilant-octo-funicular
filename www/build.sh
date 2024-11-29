@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo "Installing dependencies from npm..."
 npm i
 
