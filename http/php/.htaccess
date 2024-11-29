@@ -1,3 +1,11 @@
 <Files ".*format.py">
 	Require all denied
 </Files>
+
+<Files "hwinfo.php">
+	AuthType Basic
+	AuthName global
+	AuthUserFile /etc/httpd/conf/passwd
+	Require valid-user
+</Files>
+
