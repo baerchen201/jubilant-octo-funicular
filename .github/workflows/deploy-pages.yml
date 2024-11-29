@@ -26,7 +26,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run sh build script
-        run: ./www/build.sh "${{ secrets.SECRET_KEY }}" "${{ secrets.SECRET_IV }}"
+        run: bash ./www/build.sh "${{ secrets.SECRET_KEY }}" "${{ secrets.SECRET_IV }}"
 
       - name: Run py build script
         run: python3 "www/build.py" "${{ github.repository }}" "${{ github.sha }}" "${{ github.token }}"
