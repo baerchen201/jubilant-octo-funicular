@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 echo "Installing dependencies from npm..."
 npm i
@@ -14,7 +15,7 @@ echo "Building typescript..."
 )
 
 echo "Building scss..."
-sass www
+./node_modules/sass/sass.js www
 
 echo "Decrypting secret gif..."
 openssl enc -aes-256-cbc -d -in "./www/secret.gif.bin" -out "./www/secret.gif" -nosalt -K "$1" -iv "$2"
