@@ -13,6 +13,9 @@ argparser.add_argument(
 argparser.add_argument(
     "-C", help="use command as prefix if not explicitly specified", action="store_true"
 )
+argparser.add_argument(
+    "-l", help="always clear SHLVL variable for process", action="store_true"
+)
 args = argparser.parse_args()
 
 with open(args.file, "rb") as f:
@@ -41,7 +44,7 @@ with open(args.file, "rb") as f:
 
         if args.c:  # If -c argument specified, test for match
             if args.c == display:
-                print(command)
+                print(("SHLVL=0 " if args.l else "") + command)
                 raise SystemExit(0)
         else:
             print(display)

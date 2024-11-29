@@ -1,6 +1,6 @@
 # General programs
 Firefox|firefox 						# Web Browser
-Alacritty (Terminal Emulator)|alacritty|SHLVL=0 alacritty 	# Terminal
+Alacritty (Terminal Emulator)|alacritty|alacritty 		# Terminal
 Thunar (File Manager)|thunar 					# File manager
 VLC Media Player|vlc 						# Media player
 Neovim|nvim|alacritty -e nvim 					# Text editor
