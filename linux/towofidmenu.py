@@ -1,4 +1,5 @@
 import sys
+import re
 
 import argparse
 
@@ -16,6 +17,8 @@ args = argparser.parse_args()
 
 with open(args.file, "rb") as f:
     for item in f.read().decode().strip().splitlines():
+        if not re.sub(r"#[^\n]*", "", item.strip()).strip():
+            continue
         line = item.split("|", 2)  # Split only twice to allow commands with pipes
         command, display, prefix = [None for _ in range(3)]  # Initialize variables
         match len(line):

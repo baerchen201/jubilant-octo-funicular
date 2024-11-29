@@ -1,19 +1,30 @@
-Firefox|firefox
-Alacritty (Terminal Emulator)|alacritty|SHLVL=0 alacritty
-Thunar (File Manager)|thunar
-VLC Media Player|vlc
+# General programs
+Firefox|firefox 						# Web Browser
+Alacritty (Terminal Emulator)|alacritty|SHLVL=0 alacritty 	# Terminal
+Thunar (File Manager)|thunar 					# File manager
+VLC Media Player|vlc 						# Media player
+Neovim|nvim|alacritty -e nvim 					# Text editor
+
+# Messengers
 Discord|discord
 Telegram Messenger|telegram-desktop
-GNU Image Manipulation Program|gimp
-Neovim|nvim|alacritty -e nvim
 Thunderbird (E-Mail)|thunderbird
-osu!lazer|osu|/usr/local/bin/osu
-Steam|steam
-OBS Studio|obs
-VMWare Workstation Pro|vmware
+
+# Multimedia
+GNU Image Manipulation Program|gimp 				# Photo editor
+OBS Studio|obs 							# Screen recorder
 Calibre (eBook manager)|calibre
-Take screenshot|grim|sleep 0.5; grim - | wl-copy
-Audio settings|pavucontrol
-Tablet settings|opentabletdriver|otd-gui
-Show all Applications|wofi --show drun -np "Search applications" -O alphabetical
-Show all commands|wofi --show run -np "Search commands" -O alphabetical
+
+# Gaming
+Steam|steam
+osu!lazer|osu|/usr/local/bin/osu
+
+# Other applications
+VMWare Workstation Pro|vmware 					# Virtual Machine Manager
+Visual Studio Code|vscode|code 					# IDE
+
+# Settings / System
+Take screenshot|grim|sleep 0.5; grim - | wl-copy 		# Copies screenshot to clipboard
+Audio settings|pavucontrol 					# PulseAudio settings (works with pipewire-pulse, use that)
+Tablet settings|opentabletdriver|otd-gui 			# OpenTabletDriver
+Run|wofi --show run -np "Search commands" -O alphabetical 	# Show all commands
