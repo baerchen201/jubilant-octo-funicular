@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # This script is only for personal use.
 # Do NOT use this for malicious purposes
 
