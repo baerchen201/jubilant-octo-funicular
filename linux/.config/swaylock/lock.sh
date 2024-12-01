@@ -12,10 +12,10 @@ systemctl --user start discordidle.service &
   _sha=$(sha1sum "$1")
   if ! [ "$?" = "0" ]; then exit 1; fi
 
-  _cat=$(cat "/tmp/${USER}_$(basename "$1")_sha")
+  _cat=$(cat "/tmp/${USER}_wall_sha")
 
-  if ! [ "$_sha" = "$_cat" ]; then
-    echo "$_sha" > "/tmp/${USER}_$(basename "$1")_sha"
+  if ! [ -f "~/.config/swaylock/lock.png" ] || [ "$_sha" != "$_cat" ]; then
+    echo "$_sha" > "/tmp/${USER}_wall_sha"
     rm -f ~/.config/swaylock/lock.png
     python3 ~/.config/swaylock/lockimage.py "$1" ~/.config/swaylock/lock.png
     exit "$?"
