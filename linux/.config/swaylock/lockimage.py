@@ -11,8 +11,9 @@ import os
 from PIL import Image, ImageEnhance, ImageFilter
 
 i = Image.open(args.imagein)
+i = i.convert("RGBA")
 
 i = ImageEnhance.Brightness(i).enhance(0.3)
 i = i.filter(ImageFilter.GaussianBlur(4))
 
-i.save(args.imageout)
+i.save(args.imageout, format=args.imageout.name.split(".")[-1])
