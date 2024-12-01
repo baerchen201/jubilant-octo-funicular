@@ -3,17 +3,21 @@
 # Discord status
 systemctl --user start discordidle.service &
 
-# Generate lock image
+# Generate lock image based on first argument
 (
-  _sha=$(sha1sum ~/.config/hypr/wallpaper.png)
+  if ! [ -f "$1" ]; then
+    exit 1
+  fi
+
+  _sha=$(sha1sum "$1")
   if ! [ "$?" = "0" ]; then exit 1; fi
 
-  _cat=$(cat "/tmp/${USER}_wallpaper_sha")
+  _cat=$(cat "/tmp/${USER}_$(basename "$1")_sha")
 
   if ! [ "$_sha" = "$_cat" ]; then
-    echo "$_sha" > "/tmp/${USER}_wallpaper_sha"
+    echo "$_sha" > "/tmp/${USER}_$(basename "$1")_sha"
     rm -f ~/.config/swaylock/lock.png
-    python3 ~/.config/swaylock/lockimage.py
+    python3 ~/.config/swaylock/lockimage.py "$1" ~/.config/swaylock/lock.png
     exit "$?"
   fi
   exit 0
@@ -21,7 +25,7 @@ systemctl --user start discordidle.service &
 
 # Lock screen
 if [ "$?" = "0" ]; then
-  swaylock -C "$(dirname $0)/config"
+  swaylock
 else
   swaylock -C "/dev/null"
 fi

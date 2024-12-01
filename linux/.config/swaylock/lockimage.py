@@ -1,9 +1,18 @@
+import argparse
+
+argparser = argparse.ArgumentParser(
+    prog="lockimage.py", description="lockscreen image generator"
+)
+argparser.add_argument("imagein", type=argparse.FileType("rb"))
+argparser.add_argument("imageout", type=argparse.FileType("wb"))
+args = argparser.parse_args()
+
 import os
 from PIL import Image, ImageEnhance, ImageFilter
 
-i = Image.open(os.path.expanduser("~/.config/hypr/wallpaper.png"))
+i = Image.open(args.imagein)
 
 i = ImageEnhance.Brightness(i).enhance(0.3)
 i = i.filter(ImageFilter.GaussianBlur(4))
 
-i.save(os.path.expanduser("~/.config/swaylock/lock.png"), format="png")
+i.save(args.imageout)
