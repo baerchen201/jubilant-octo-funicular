@@ -59,6 +59,14 @@ with open("./www/discord-css.html", "wb") as f:
     )
     t = 0
     with open("./www/discord-css-all.css", "wb") as a:
+        a.write(
+            "/**\n"
+            " * @name All baer1 themes\n"
+            " * @author baer1\n"
+            " * @description All themes published on https://baerchen201.github.io, always up to date\n"
+            " * @version latest\n"
+            " */\n\n"
+        )
         for dir, subdirs, files in os.walk("./discord-css"):
             for file in files:
                 if file.endswith(".css"):
@@ -87,7 +95,7 @@ with open("./www/discord-css.html", "wb") as f:
 
     if t:
         f.write(
-            '<a href="discord-css-all.css" download style="margin-right: 7px; margin-top: 20px" >ALL</a><br />'.encode()
+            '<a href="discord-css-all.css" download style="margin-right: 7px; margin-top: 20px; display: inline-block" >ALL</a><br />'.encode()
         )
     f.write("</body></html>".encode())
 
