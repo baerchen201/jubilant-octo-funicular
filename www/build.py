@@ -86,7 +86,7 @@ with open("./www/discord-css.html", "wb") as f:
 
                         a.write(
                             (
-                                f"@import url(https://baerchen201.github.io/jubilant-octo-funicular/css/{file})\n"
+                                f"@import url(https://baerchen201.github.io/jubilant-octo-funicular/css/{file});\n"
                             ).encode()
                         )
 
