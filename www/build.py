@@ -60,12 +60,14 @@ with open("./www/discord-css.html", "wb") as f:
     t = 0
     with open("./www/discord-css-all.css", "wb") as a:
         a.write(
-            "/**\n"
-            " * @name All baer1 themes\n"
-            " * @author baer1\n"
-            " * @description All themes published on https://baerchen201.github.io, always up to date\n"
-            " * @version latest\n"
-            " */\n\n"
+            (
+                "/**\n"
+                " * @name All baer1 themes\n"
+                " * @author baer1\n"
+                " * @description All themes published on https://baerchen201.github.io, always up to date\n"
+                " * @version latest\n"
+                " */\n\n"
+            ).encode()
         )
         for dir, subdirs, files in os.walk("./discord-css"):
             for file in files:
