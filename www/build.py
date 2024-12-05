@@ -58,61 +58,37 @@ with open("./www/discord-css.html", "wb") as f:
         '<html><head><title>Discord CSS collection</title><meta name="nav-title" content="Discord CSS collection" /><link rel="stylesheet" href="css/global.css" /></head><body><h2 style="text-decoration: underline 0.1px" >Discord Themes for Vencord</h2>'.encode()
     )
     t = 0
-    au = 0
-    for dir, subdirs, files in os.walk("./discord-css"):
-        for file in files:
-            if file.endswith(".css"):
-                print(f"  -> Found css file {os.path.join(dir, file)}, processing...")
-                t += 1
-                f.write(
-                    f'<a href="{url_escape(os.path.join("css/", file))}" download style="margin-right: 7px" >{html_escape(file)}</a>'.encode()
-                )
-
-                with open(os.path.join(dir, file), "rb") as source:
-                    properties = (
-                        {"name": file}
-                        | dict(
-                            re.findall(
-                                r"^ \* @(\S+) (.+)$",
-                                source.read().decode(),
-                                re.MULTILINE,
-                            )
+    with open("./www/discord-css-all.css", "wb") as a:
+        for dir, subdirs, files in os.walk("./discord-css"):
+            for file in files:
+                if file.endswith(".css"):
+                    try:
+                        print(
+                            f"  -> Found css file {os.path.join(dir, file)}, processing..."
                         )
-                        | {"version": "latest"}
-                    )
-                    print("     > Generating AutoUpdater...")
-                    with open(
-                        os.path.join(
-                            "./www/css/",
-                            file.removesuffix(".css") + ".autoupdater.css",
-                        ),
-                        "wb",
-                    ) as u:
-                        u.write(
+                        os.rename(
+                            os.path.join(dir, file), os.path.join("./www/css/", file)
+                        )
+                        t += 1
+                        f.write(
+                            f'<a href="{url_escape(os.path.join("css/", file))}" download style="margin-right: 7px" >{html_escape(file)}</a><br />'.encode()
+                        )
+
+                        a.write(
                             (
-                                f"/**\n{chr(10).join([' * @'+k+' '+v for k,v in properties.items()])}\n */\n"
-                                f"@import url(https://baerchen201.github.io/jubilant-octo-funicular/css/{file})"
+                                f"@import url(https://baerchen201.github.io/jubilant-octo-funicular/css/{file})\n"
                             ).encode()
                         )
-                    _ = url_escape(
-                        os.path.join(
-                            "css/",
-                            file.removesuffix(".css") + ".autoupdater.css",
+
+                    except (FileExistsError, IsADirectoryError, NotADirectoryError):
+                        print(
+                            f"     > File {os.path.join('css/', file)} already exists, not overwriting"
                         )
-                    )
-                    f.write(
-                        f'<a href="{_}" download="{file}" style="font-size: 0.6em" >AutoUpdate</a>'.encode()
-                    )
-                    au += 1
-                f.write("<br />".encode())
 
-                try:
-                    os.rename(os.path.join(dir, file), os.path.join("./www/css/", file))
-                except (FileExistsError, IsADirectoryError, NotADirectoryError):
-                    print(
-                        f"     > File {os.path.join('css/', file)} already exists, not overwriting"
-                    )
-
+    if t:
+        f.write(
+            '<a href="discord-css-all.css" download style="margin-right: 7px; margin-top: 20px" >ALL</a><br />'
+        )
     f.write("</body></html>".encode())
 
     if t:
