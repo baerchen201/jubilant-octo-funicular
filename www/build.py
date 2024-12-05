@@ -87,7 +87,7 @@ with open("./www/discord-css.html", "wb") as f:
 
     if t:
         f.write(
-            '<a href="discord-css-all.css" download style="margin-right: 7px; margin-top: 20px" >ALL</a><br />'
+            '<a href="discord-css-all.css" download style="margin-right: 7px; margin-top: 20px" >ALL</a><br />'.encode()
         )
     f.write("</body></html>".encode())
 
