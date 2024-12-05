@@ -24,7 +24,6 @@ jobs:
     steps:
       - name: Download repository
         uses: actions/checkout@v4
-      - run: echo ${{github.event_name}}
 
       - name: Run sh build script
         run: bash ./www/build.sh "${{ secrets.SECRET_KEY }}" "${{ secrets.SECRET_IV }}"
