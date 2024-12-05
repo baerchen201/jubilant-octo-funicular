@@ -92,9 +92,7 @@ with open("./www/discord-css.html", "wb") as f:
     f.write("</body></html>".encode())
 
     if t:
-        print(
-            f"==> Processed discord-css, processed {t} file{'' if t == 1 else 's'}{f', generated {au} autoupdater{str() if au==1 else chr(115)}' if au else ''}"
-        )
+        print(f"==> Processed discord-css, processed {t} file{'' if t == 1 else 's'}")
     else:
         print("==> No css files found to process")
 
