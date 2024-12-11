@@ -29,7 +29,7 @@
     },
   },
   "clock": {
-    "tooltip-format": "{:%Y-%m-%d}",
+    "tooltip-format": "{:%d.%m.%Y}",
   },
   "cpu": {
     "format": "{usage}% ",
