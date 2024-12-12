@@ -17,7 +17,7 @@ OBS Studio|obs 							# Screen recorder
 Calibre (eBook manager)|calibre
 
 # Gaming
-Steam|steam
+Steam|steam|~/.steam/steam/steam.sh
 osu!lazer|osu|/usr/local/bin/osu
 
 # Other applications
