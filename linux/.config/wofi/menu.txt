@@ -5,6 +5,7 @@ Thunar (File Manager)|thunar 					# File manager
 VLC Media Player|vlc 						# Media player
 Neovim|nvim|alacritty -e nvim 					# Text editor
 qBittorrent|qbittorrent						# Torrent client
+FileZilla (FTP)|filezilla					# FTP Client
 
 # Messengers
 Discord|discord
@@ -19,6 +20,7 @@ Calibre (eBook manager)|calibre
 # Gaming
 Steam|steam|~/.steam/steam/steam.sh
 osu!lazer|osu|/usr/local/bin/osu
+Minecraft|prismlauncher|/mnt/ext/prismlinux/PrismLauncher
 
 # Other applications
 VMWare Workstation Pro|vmware 					# Virtual Machine Manager
@@ -27,5 +29,6 @@ Visual Studio Code|vscode|code 					# IDE
 # Settings / System
 Take screenshot|grim|sleep 0.5; grim - | wl-copy 		# Copies screenshot to clipboard
 Audio settings|pavucontrol 					# PulseAudio settings (works with pipewire-pulse, use that)
+Audio mixer|qpwgraph						# "Mixer" yeah right this is crazy
 Tablet settings|opentabletdriver|otd-gui 			# OpenTabletDriver
 Run|wofi --show run -np "Search commands" -O alphabetical 	# Show all commands
