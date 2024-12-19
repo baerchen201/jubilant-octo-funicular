@@ -16,6 +16,7 @@ Thunderbird (E-Mail)|thunderbird
 GNU Image Manipulation Program|gimp 				# Photo editor
 OBS Studio|obs 							# Screen recorder
 Calibre (eBook manager)|calibre
+DaVinci Resolve|resolve|/opt/resolve/bin/resolve		# Video editor
 
 # Gaming
 Steam|steam|~/.steam/steam/steam.sh
