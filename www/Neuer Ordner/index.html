@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>austrianpainter</title>
+    <style>
+      body {
+        color: #c00;
+        background: #222;
+        font-family: Comic Sans MS, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+          "Helvetica Neue", sans-serif;
+        font-size: larger;
+      }
+      a {
+        color: #e00;
+      }
+      img.inline {
+        height: 1em;
+      }
+      .mew_img {
+        display: none;
+      }
+      #overlay {
+        display: none;
+        position: fixed;
+        z-index: 20000;
+        background: url(putingridingbear.jpg);
+        background-size: cover;
+        inset: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <a><h1>amogus sigma skibidi rizzler</h1></a>
+    ein amogus sigma skibidi rizzler ist ein
+    <a href="https://knowyourmeme.com/memes/amogus">mogus</a>, der eine
+    <a href="https://de.wikipedia.org/wiki/Skibidi_Toilet">skibidi toilette</a>
+    rizzt, indem er einen auf Sigma macht während er
+    <img class="inline" src="200w.gif" alt="among us dance" /> macht.
+    <br />
+    <a href="https://www.wikihow.com/Mew" id="mew">
+      <img src="giphy.gif" alt="putin mew" class="mew_img" />
+      <img src="giphy1.gif" alt="me: mew" class="mew_img" />
+      <img src="giphy2.gif" alt="snowman mew" class="mew_img" />
+      <img
+        src="bye-bye-mewing.gif"
+        alt="sigma mew"
+        class="mew_img"
+        height="450"
+      />
+      <img src="giphy3.gif" alt="donald dump mew" class="mew_img" />
+      <img src="esdKrd.gif" alt="kid mew" class="mew_img" />
+      <img
+        src="maxresdefault.jpg"
+        alt="mew biden"
+        class="mew_img"
+        height="500"
+      />
+      <img
+        src="8ee837d9-452f-4325-af0a-a00cc1c2c63e.jpg"
+        alt="ai put in mew"
+        class="mew_img"
+        height="450"
+      />
+    </a>
+    <img
+      src="bear-fight.gif"
+      alt="bear sigma"
+      id="bear-fight"
+      style="display: none; cursor: pointer"
+      onclick="document.getElementById('overlay').style.display='initial'"
+    />
+
+    <div id="overlay"></div>
+
+    <script>
+      function list_rand(list) {
+        return list[Math.floor(Math.random() * list.length)];
+      }
+      document.querySelector("a").href = list_rand([
+        "https://www.gutefrage.net/frage/ist-der-sigma-nicht-aktuell-oder-wuerde-er-bin-skibidi-rizzler-abgeloest",
+        "https://www.gutefrage.net/frage/wir-werde-ich-zum-ober-sigma-oder-alpha-rizzler",
+        "https://www.gutefrage.net/frage/ich-bin-stolzer-sigma-und-ihr",
+        "https://www.gutefrage.net/frage/wie-werde-ich-ein-sigma-male-2",
+      ]);
+
+      let mews = Array.from(document.getElementsByClassName("mew_img"));
+      if (sessionStorage.getItem("last_mew_img") == null)
+        sessionStorage.setItem(
+          "last_mew_img",
+          Math.floor(Math.random() * mews.length).toString()
+        );
+
+      try {
+        if (Math.random() < 0.03) {
+          document.getElementById("bear-fight").style.display = "initial";
+        } else {
+          mews[
+            Number(sessionStorage.getItem("last_mew_img")) % mews.length
+          ].style.display = "initial";
+          sessionStorage.setItem(
+            "last_mew_img",
+            Number(sessionStorage.getItem("last_mew_img")) + 1
+          );
+        }
+      } catch {
+        sessionStorage.removeItem("last_mew_img");
+        location.reload();
+      }
+    </script>
+  </body>
+</html>
