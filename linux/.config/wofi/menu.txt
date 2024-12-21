@@ -14,7 +14,7 @@ Thunderbird (E-Mail)|thunderbird
 
 # Multimedia
 GNU Image Manipulation Program|gimp 				# Photo editor
-OBS Studio|obs 							# Screen recorder
+OBS Studio|obs|flatpak run com.obsproject.Studio 		# Screen recorder
 Calibre (eBook manager)|calibre
 DaVinci Resolve|resolve|/opt/resolve/bin/resolve		# Video editor
 
