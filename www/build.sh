@@ -15,7 +15,7 @@ echo "Building typescript..."
 )
 
 echo "Building scss..."
-./node_modules/sass/sass.js .
+npx sass .
 
 echo "Decrypting secret gif..."
 openssl enc -aes-256-cbc -d -in "./www/secret.gif.bin" -out "./www/secret.gif" -nosalt -K "$1" -iv "$2"
