@@ -16,7 +16,7 @@ Thunderbird (E-Mail)|thunderbird
 GNU Image Manipulation Program|gimp 				# Photo editor
 OBS Studio|obs|flatpak run com.obsproject.Studio 		# Screen recorder
 Calibre (eBook manager)|calibre
-DaVinci Resolve|resolve|/opt/resolve/bin/resolve		# Video editor
+kdenlive|kdenlive							# Video editor
 
 # Gaming
 Steam|steam|~/.steam/steam/steam.sh
@@ -26,6 +26,7 @@ Minecraft|prismlauncher|/mnt/ext/prismlinux/PrismLauncher
 # Other applications
 VMWare Workstation Pro|vmware 					# Virtual Machine Manager
 Visual Studio Code|vscode|code 					# IDE
+Blender|blender							# 3D Editing
 
 # Settings / System
 Take screenshot|grim|sleep 0.5; grim - | wl-copy 		# Copies screenshot to clipboard
