@@ -1,5 +1,5 @@
 # General programs
-Firefox|firefox 						# Web Browser
+Firefox|firefox|flatpak run org.mozilla.firefox			# Web Browser
 Alacritty (Terminal Emulator)|alacritty|alacritty 		# Terminal
 Thunar (File Manager)|thunar 					# File manager
 VLC Media Player|vlc 						# Media player
@@ -14,9 +14,9 @@ Thunderbird (E-Mail)|thunderbird
 
 # Multimedia
 GNU Image Manipulation Program|gimp 				# Photo editor
-OBS Studio|obs|flatpak run com.obsproject.Studio 		# Screen recorder
+OBS Studio|obs					 		# Screen recorder
 Calibre (eBook manager)|calibre
-kdenlive|kdenlive							# Video editor
+kdenlive|kdenlive						# Video editor
 
 # Gaming
 Steam|steam|~/.steam/steam/steam.sh
