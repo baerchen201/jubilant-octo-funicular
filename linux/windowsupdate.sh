@@ -6,4 +6,3 @@ sudo pacman -Syu --noconfirm
 
 # (so the windows immigrants don't get confused)
 sudo reboot
-
