@@ -1,0 +1,9 @@
+// Fixes https://github.com/moistp1ckle/GitHub_Dark on the latest discord update, not perfect and based on my preferences
+
+:root {
+    --border: 1px solid #1a1c28;
+}
+
+.channelBottomBarArea_a7d72e > channelTextArea_a7d72e, .channelTextArea_bdf0de {
+    background-color: transparent;
+}
