@@ -1,7 +1,7 @@
 # General programs
 Firefox|firefox|flatpak run org.mozilla.firefox			# Web Browser
 Alacritty (Terminal Emulator)|alacritty|alacritty 		# Terminal
-Thunar (File Manager)|thunar 					# File manager
+Nemo (File Manager)|nemo 					# File manager
 VLC Media Player|vlc 						# Media player
 Neovim|nvim|alacritty -e nvim 					# Text editor
 qBittorrent|qbittorrent						# Torrent client
