@@ -28,6 +28,7 @@ VMWare Workstation Pro|vmware 					# Virtual Machine Manager
 Visual Studio Code|vscode|code 					# IDE
 Blender|blender							# 3D Editing
 r2modman|r2modman						# Unity game mod manager (lethag company)
+Free Download Manager|fdm					# Download Manager
 
 # Settings / System
 Take screenshot|grim|sleep 0.5; grim - | wl-copy 		# Copies screenshot to clipboard
