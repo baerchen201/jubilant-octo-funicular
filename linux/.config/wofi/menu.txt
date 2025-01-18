@@ -1,5 +1,5 @@
 # General programs
-Firefox|firefox|flatpak run org.mozilla.firefox			# Web Browser
+Firefox|firefox|firefox  					# Web Browser
 Alacritty (Terminal Emulator)|alacritty|alacritty 		# Terminal
 Nemo (File Manager)|nemo 					# File manager
 VLC Media Player|vlc 						# Media player
@@ -23,12 +23,17 @@ Steam|steam|~/.steam/steam/steam.sh
 osu!lazer|osu|/usr/local/bin/osu
 Minecraft|prismlauncher|/mnt/ext/prismlinux/PrismLauncher
 
+# Microsoft Office
+Microsoft Word|winword|python3 -m cassowary -c guest-run -- 'C:\\Program Files\\Microsoft Office\\Root\\Office16\\WINWORD.EXE'
+Microsoft Excel|excel|python3 -m cassowary -c guest-run -- 'C:\\Program Files\\Microsoft Office\\Root\\Office16\\EXCEL.EXE'
+Microsoft PowerPoint|powerpnt|python3 -m cassowary -c guest-run -- 'C:\\Program Files\\Microsoft Office\\Root\\Office16\\POWERPNT.EXE'
+
 # Other applications
-VMWare Workstation Pro|vmware 					# Virtual Machine Manager
 Visual Studio Code|vscode|code 					# IDE
 Blender|blender							# 3D Editing
 r2modman|r2modman						# Unity game mod manager (lethag company)
 Free Download Manager|fdm					# Download Manager
+Virtual Machine Manager|virt-manager				# Turns out vmware sucks just as much as virtualbox
 
 # Settings / System
 Take screenshot|grim|sleep 0.5; grim - | wl-copy 		# Copies screenshot to clipboard
