@@ -43,7 +43,7 @@
     "tooltip-format": "{ifname} via {gwaddr} ",
     "format-linked": "{ifname} (No IP) ",
     "format-disconnected": "Disconnected ⚠",
-    "on-click": "alacritty -e nmtui"
+    "on-click": "alacritty -e nmtui",
   },
 
   // Use pipewire + pipewire-pulse instead of pulseaudio
