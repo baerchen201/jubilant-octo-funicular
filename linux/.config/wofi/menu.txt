@@ -1,7 +1,8 @@
 # General programs
 Firefox|firefox|firefox  					# Web Browser
 Alacritty (Terminal Emulator)|alacritty|alacritty 		# Terminal
-Nemo (File Manager)|nemo 					# File manager
+Nemo (File Manager)|nemo 					# Cinnamon File manager (Better style)
+Dolphin (File Manager)|dolphin					# KDE File Manager	(Better previews and icons)
 VLC Media Player|vlc 						# Media player
 Neovim|nvim|alacritty -e nvim 					# Text editor
 qBittorrent|qbittorrent						# Torrent client
