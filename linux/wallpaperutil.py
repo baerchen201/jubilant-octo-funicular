@@ -93,9 +93,13 @@ match args.cmd:
                     f.convert("RGB")
                     try:
                         if args.geometry:
-                            f=f.resize(tuple([int(i) for i in args.geometry.split("x", 1)]))
+                            f = f.resize(
+                                tuple([int(i) for i in args.geometry.split("x", 1)])
+                            )
                     except (TypeError, ValueError):
-                        print("Invalid resize value") # Should never happen, -g is checked above
+                        print(
+                            "Invalid resize value"
+                        )  # Should never happen, -g is checked above
                         raise SystemExit(1)
                     f.save(args.config / "wallpaper.png", format="png")
                 args.image = args.config / "wallpaper.png"
