@@ -7,6 +7,7 @@ VLC Media Player|vlc 						# Media player
 Neovim|nvim|alacritty -e nvim 					# Text editor
 qBittorrent|qbittorrent						# Torrent client
 FileZilla (FTP)|filezilla					# FTP Client
+Nomacs (Image Viewer)|nomacs
 
 # Messengers
 Discord|discord

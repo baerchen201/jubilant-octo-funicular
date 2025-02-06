@@ -6,7 +6,7 @@ import os
 import json
 import subprocess
 import sys
-from typing import Literal
+import re
 
 try:
     import PIL
@@ -47,10 +47,10 @@ set_conversion_args.add_argument(
 set_conversion_args.add_argument(
     "-g",
     "--geometry",
-    type=int,
+    type=str,
     dest="geometry",
-    help="Resize image to fit a preset - TODO: IMPLEMENT",
-    metavar="preset",
+    help="Resize image (format: WIDTHxHEIGHT)",
+    metavar="value",
 )
 set_args.add_argument(
     "--no-reload",
@@ -58,7 +58,6 @@ set_args.add_argument(
     action="store_true",
     help="Does not reload hyprland automatically",
 )
-subparsers.add_parser("presets", help="\\  Display presets for image resizing")
 subparsers.add_parser("get", help="Display wallpaper and overrides")
 override_args = subparsers.add_parser(
     "override", help="Change wallpaper conditionally - TODO: IMPLEMENT"
@@ -72,48 +71,16 @@ except FileExistsError:
     print("The provided config directory already exists as a file")
     raise SystemExit(1)
 
-RESIZE_PRESETS: dict[int, tuple[bool, int, int]] = {
-    0: (False, 1920, 1080),
-    1: (True, 1920, 1080),
-    2: (False, 2560, 1440),
-    3: (True, 2560, 1440),
-}
 
 match args.cmd:
-    case "presets":
-        for k, v in RESIZE_PRESETS.items():
-            print(
-                (
-                    " "
-                    * (
-                        len(str(sorted(list(RESIZE_PRESETS.keys()))[-1]))
-                        + 2
-                        - len(str(k))
-                    )
-                )
-                + str(k)
-                + ":",
-                "CUT" if v[0] else "PAD",
-                (
-                    (
-                        len(
-                            str(
-                                sorted(list([i[1] for i in RESIZE_PRESETS.values()]))[
-                                    -1
-                                ]
-                            )
-                        )
-                        - len(str(v[1]))
-                    )
-                    * " "
-                )
-                + str(v[1])
-                + "x"
-                + str(v[2]),
-                sep=" ",
-            )
-        raise SystemExit(0)
     case "set":
+        if args.geometry:
+            if not re.fullmatch(r"\d+x\d+", args.geometry):
+                print(f"Invalid argument -g: {args.geometry}, format WIDTHxHEIGHT")
+                if re.fullmatch(r"\d+x\d+", args.geometry, re.I):
+                    print("Using an uppercase X is not supported")
+                raise SystemExit(1)
+
         try:
             with open(args.config / "config.json", "r") as f:
                 configs = json.load(f)
@@ -124,6 +91,12 @@ match args.cmd:
             try:
                 with Image.open(args.image) as f:
                     f.convert("RGB")
+                    try:
+                        if args.geometry:
+                            f=f.resize(tuple([int(i) for i in args.geometry.split("x", 1)]))
+                    except (TypeError, ValueError):
+                        print("Invalid resize value") # Should never happen, -g is checked above
+                        raise SystemExit(1)
                     f.save(args.config / "wallpaper.png", format="png")
                 args.image = args.config / "wallpaper.png"
             except PIL.UnidentifiedImageError:
