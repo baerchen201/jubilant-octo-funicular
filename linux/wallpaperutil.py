@@ -15,7 +15,8 @@ except ModuleNotFoundError:
     Image = None
 
 parser = argparse.ArgumentParser(
-        prog="wallpaperutil.py", description="Wallpaper utility for hyprland")
+    prog="wallpaperutil.py", description="Wallpaper utility for hyprland"
+)
 parser.add_argument(
     "-c",
     "--config",
@@ -108,7 +109,9 @@ match args.cmd:
             with open(args.config / "config.json", "rb") as f:
                 configs = json.load(f)
         except FileNotFoundError:
-            sys.stderr.write("No wallpaper set, use `wallpaperutil.py -h` for more information\n")
+            sys.stderr.write(
+                "No wallpaper set, use `wallpaperutil.py -h` for more information\n"
+            )
             raise SystemExit(1)
         try:
             print(configs["image"])
