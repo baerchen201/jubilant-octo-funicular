@@ -90,7 +90,7 @@ function auto_connect_ports(args)
       print(source_name, sink_name)
       for source in source_om:iterate { Constraint { "port.name", "equals", source_name } } do
 	print(source)
-       	for sink in sink_om:iterate { Constraint { "audio.channel", "equals", sink_name } } do
+       	for sink in sink_om:iterate { Constraint { "port.name", "equals", sink_name } } do
 	  print(sink)
           local link = link_port(source, sink)
  	  if link then
@@ -116,8 +116,23 @@ auto_connect_ports {
   source = Constraint { "object.path", "matches", "virtual_in:*" },
   sink = Constraint { "port.alias", "matches", "ALC671 Analog:*" },
   connect = {
-    monitor_FL = "FL",
-    monitor_FR = "FR"
+    monitor_FL = "playback_FL",
+    monitor_FR = "playback_FR"
   }
 }
 
+auto_connect_ports {
+  source = Constraint { "object.path", "matches", "virtual_in:*" },
+  sink = Constraint { "object.path", "matches", "virtualx_in:*" },
+  connect = {
+    monitor_FL = "playback_1",
+    monitor_FR = "playback_2"
+  }
+}
+auto_connect_ports {
+  source = Constraint { "object.path", "matches", "rnnoise_source:*" },
+  sink = Constraint { "object.path", "matches", "virtualx_in:*" },
+  connect = {
+    capture_1 = "playback_3",
+  }
+}

@@ -5,24 +5,18 @@
  * @version 0.0.1
  */
 
-.sidebar_a4d4d9:has(.nav_e462a4) {
-  // Hide sidebar (nobody needs quests)
-  display: none;
+.sidebar_c48ade:has(.header__551b0):has(.nav__551b0) {
+  transition: width 150ms ease-out;
+  // Hide sidebar if not hovered
+  .wrapper_ef3116.guilds_c48ade:not(:hover) ~ * &:not(:hover) {
+    width: 0 !important;
+  }
 
   // If sidebar fits discover layout, apply other changes using ~
-  & ~ .container_d746e5 {
-    // Force background on top bar
-    & .backdrop_accde0 {
-      opacity: 1 !important;
-    }
-    // Remove big title
-    & .container_b97772:has(.gradientBackground_b97772) {
-      display: none;
-
-      // Manually pad content (originally done by the banner)
-      & ~ .contentSection_a56260 {
-        padding-top: 60px;
-      }
-    }
+  & ~ * .container_e9ef78 {
+    height: 0;
+    min-height: 0;
+    max-height: 0;
+    opacity: 0;
   }
 }
