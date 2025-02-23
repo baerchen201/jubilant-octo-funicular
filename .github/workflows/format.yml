@@ -27,7 +27,7 @@ jobs:
           sudo npm i # Prettier version and plugins should be specified in package.json
 
       - name: Format python using black
-        run: black . --target-version py310
+        run: black . --target-version py313
       - name: Run prettier
         run: |
           python3 http/php/.preformat.py
