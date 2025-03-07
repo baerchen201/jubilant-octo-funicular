@@ -18,7 +18,8 @@ Thunderbird (E-Mail)|thunderbird
 GNU Image Manipulation Program|gimp 				# Photo editor
 OBS Studio|obs					 		# Screen recorder
 Calibre (eBook manager)|calibre
-kdenlive|kdenlive						# Video editor
+kdenlive|kdenlive|flatpak run org.kde.kdenlive			# Video editor
+Audacity|audacity						# Audio editor
 
 # Gaming
 Steam|steam|~/.steam/steam/steam.sh
@@ -36,6 +37,9 @@ Blender|blender							# 3D Editing
 r2modman|r2modman						# Unity game mod manager (lethag company)
 Free Download Manager|fdm					# Download Manager
 Virtual Machine Manager|virt-manager				# Turns out vmware sucks just as much as virtualbox
+JetBrains Rider|rider|flatpak run com.jetbrains.Rider		# C# IDE
+JetBrains PyCharm|pycharm|flatpak run com.jetbrains.PyCharm-Community # Python IDE
+AvaloniaILSpy|avaloniailspy					# ILSpy for linux
 
 # Settings / System
 Take screenshot|grim|sleep 0.5; grim - | wl-copy 		# Copies screenshot to clipboard
