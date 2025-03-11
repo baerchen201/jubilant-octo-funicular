@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="nav-title" content="Discord hidden ping generator" />
+    <title>Discord hidden ping generator</title>
+    <link rel="stylesheet" href="css/global.css" />
+  </head>
+  <body>
+    <a href="nav.html"><button>&lt; back</button></a>
+
+    <style>
+      body > div {
+        display: flex;
+        flex-direction: column;
+        padding-top: 8px;
+        gap: 8px;
+      }
+      textarea {
+        width: fit-content;
+      }
+      .chars span {
+        color: #f00;
+        font-weight: bold;
+      }
+    </style>
+    <button
+      onclick="navigator.clipboard.writeText(document.getElementById('result').value).then(()=>alert('Copied')).catch(()=>alert('Copy failed'))"
+      id="copy"
+      disabled
+    >
+      Copy result
+    </button>
+    <span id="chars">0/1000 characters</span>
+    <div>
+      <textarea
+        rows="9"
+        cols="40"
+        id="message"
+        placeholder="Visible message"
+        oninput="update()"
+      ></textarea>
+      <textarea
+        rows="9"
+        cols="40"
+        id="hidden"
+        placeholder="Hidden message"
+        oninput="update()"
+      ></textarea>
+      <textarea
+        rows="9"
+        cols="40"
+        id="result"
+        placeholder="Result (updates live)"
+        disabled
+      ></textarea>
+    </div>
+    <script>
+      function update() {}
+      Array.from(document.getElementsByTagName("textarea")).forEach(
+        (e) => (e.value = ""),
+      );
+
+      function update() {
+        let message = document.getElementById("message").value,
+          hidden = document.getElementById("hidden").value;
+        document.getElementById("result").value =
+          `${message}${decodeURIComponent("||\u200b||").repeat(200)}${hidden}`;
+
+        document.getElementById("copy").disabled = false;
+
+        document.getElementById("chars").innerText =
+          `${message.length + hidden.length}/1000 characters`;
+        if (message.length + hidden.length > 1000)
+          document.body.classList.add("chars");
+        else document.body.classList.remove("chars");
+      }
+    </script>
+  </body>
+</html>
