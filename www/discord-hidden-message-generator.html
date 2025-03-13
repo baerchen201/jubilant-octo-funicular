@@ -61,6 +61,7 @@
       Array.from(document.getElementsByTagName("textarea")).forEach(
         (e) => (e.value = ""),
       );
+      document.getElementById("copy").disabled = true;
 
       function update() {
         let message = document.getElementById("message").value,
