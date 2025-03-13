@@ -36,5 +36,12 @@ body {
     &:hover {
       @extend a, :hover;
     }
+
+    &:disabled {
+      color: variables.$button-color-disabled;
+      cursor: no-drop;
+      border-color: light-dark(#666, #444);
+      background: variables.$button-background-disabled;
+    }
   }
 }

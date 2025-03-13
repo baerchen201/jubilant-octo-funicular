@@ -1,6 +1,8 @@
-$link-color: light-dark(#e00, #b00);
-$link-color-hover: light-dark(#f66, #d22);
+$link-color: light-dark(#f44, #b00);
+$link-color-hover: light-dark(#d22, #d22);
 $title-color: light-dark(#222, #aaa);
 $button-color: light-dark(#000, #fff);
 $button-background: light-dark(#bbb, #333);
+$button-color-disabled: light-dark(#111, #bbb);
+$button-background-disabled: light-dark(#999, #222);
 $background: light-dark(#eee, #111);
