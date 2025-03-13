@@ -8,6 +8,7 @@ Neovim|nvim|alacritty -e nvim 					# Text editor
 qBittorrent|qbittorrent						# Torrent client
 FileZilla (FTP)|filezilla					# FTP Client
 Nomacs (Image Viewer)|nomacs
+nwg-look (Appearance settings)|nwg-look
 
 # Messengers
 Discord|discord
@@ -25,11 +26,6 @@ Audacity|audacity						# Audio editor
 Steam|steam|~/.steam/steam/steam.sh
 osu!lazer|osu|/usr/local/bin/osu
 Minecraft|prismlauncher|/mnt/ext/prismlinux/PrismLauncher
-
-# Microsoft Office
-Microsoft Word|winword|python3 -m cassowary -c guest-run -- 'C:\\Program Files\\Microsoft Office\\Root\\Office16\\WINWORD.EXE'
-Microsoft Excel|excel|python3 -m cassowary -c guest-run -- 'C:\\Program Files\\Microsoft Office\\Root\\Office16\\EXCEL.EXE'
-Microsoft PowerPoint|powerpnt|python3 -m cassowary -c guest-run -- 'C:\\Program Files\\Microsoft Office\\Root\\Office16\\POWERPNT.EXE'
 
 # Other applications
 Visual Studio Code|vscode|code 					# IDE
