@@ -9,6 +9,7 @@
   "modules-left": [],
   "modules-center": ["hyprland/window"],
   "modules-right": [
+    "tray",
     "pulseaudio",
     "network",
     "cpu",
@@ -43,7 +44,7 @@
     "tooltip-format": "{ifname} via {gwaddr} ",
     "format-linked": "{ifname} (No IP) ",
     "format-disconnected": "Disconnected ⚠",
-    "on-click": "alacritty -e nmtui",
+    "on-click": "nm-connection-editor",
   },
 
   // Use pipewire + pipewire-pulse instead of pulseaudio
@@ -65,5 +66,10 @@
       "default": ["", "", ""],
     },
     "on-click": "uwsm app -- pavucontrol",
+  },
+
+  "tray": {
+    "icon-size": 18,
+    "spacing": 8,
   },
 }
