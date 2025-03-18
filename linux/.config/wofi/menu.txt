@@ -25,7 +25,7 @@ Audacity|audacity						# Audio editor
 # Gaming
 Steam|steam|~/.steam/steam/steam.sh
 osu!lazer|osu|/usr/local/bin/osu
-Minecraft|prismlauncher|/mnt/ext/prismlinux/PrismLauncher
+Minecraft|prismlauncher|flatpak run org.prismlauncher.PrismLauncher
 
 # Other applications
 Visual Studio Code|vscode|code 					# IDE

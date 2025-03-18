@@ -126,13 +126,13 @@ auto_connect_ports {
   sink = Constraint { "object.path", "matches", "virtualx_in:*" },
   connect = {
     monitor_FL = "playback_1",
-    monitor_FR = "playback_2"
+    monitor_FR = "playback_1"
   }
 }
 auto_connect_ports {
   source = Constraint { "object.path", "matches", "rnnoise_source:*" },
   sink = Constraint { "object.path", "matches", "virtualx_in:*" },
   connect = {
-    capture_MONO = "playback_3",
+    capture_MONO = "playback_2",
   }
 }
