@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+  <head>
+    <title>gravity.js</title>
+    <meta name="nav-title" content="gravity.js demo" />
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+    <link rel="stylesheet" href="css/global.css" />
+    <style>
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        width: fit-content;
+        height: fit-content;
+        padding: 0;
+        margin: 0;
+      }
+
+      #words > span {
+        padding-right: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h2 class="box2d">Hello, World!</h2>
+      <img class="box2d" src="img/hello.webp" />
+      <h3 class="box2d">
+        <code
+          >&lt;script src="
+          <script>
+            let _ = document.createElement("span");
+            _.innerText = location.href.split("/").reduceRight((a, v, i, s) => {
+              return (
+                (i != s.length - 1
+                  ? console.log((a = `${v}/${a}`), v, i)
+                  : null) || a
+              );
+            }, "gravity.js");
+            document.currentScript.replaceWith(_);
+          </script>
+          "&gt;&lt;/script&gt;</code
+        >
+      </h3>
+      <button
+        onclick="if (location.hash == '#text') location.hash = ''; else location.hash = 'text'; location.reload();"
+        class="box2d"
+      >
+        Toggle text gravity
+      </button>
+      <div id="words"></div>
+      <script>
+        if (location.hash == "#text") {
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur aliquam, dolore placeat ab iste delectus fugit. Voluptates optio ipsam ullam, repudiandae. Facere voluptate perspiciatis odit culpa officia laborum in sapiente. Modi perferendis voluptatem debitis esse dolorum velit deleniti fugit, omnis deserunt aspernatur reprehenderit. Nemo, aspernatur omnis optio similique soluta hic."
+            .split(" ")
+            .forEach((e) => {
+              let _ = document.createElement("span");
+              _.innerText = e;
+              document.getElementById("words").appendChild(_);
+              _.classList.add("box2d");
+              if (e.endsWith("."))
+                document
+                  .getElementById("words")
+                  .appendChild(document.createElement("br"));
+            });
+        }
+      </script>
+    </div>
+
+    <script src="gravity.js"></script>
+  </body>
+</html>
