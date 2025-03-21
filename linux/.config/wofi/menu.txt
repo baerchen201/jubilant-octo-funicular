@@ -9,6 +9,7 @@ qBittorrent|qbittorrent						# Torrent client
 FileZilla (FTP)|filezilla					# FTP Client
 Nomacs (Image Viewer)|nomacs
 nwg-look (Appearance settings)|nwg-look
+Unity Hub|flatpak run com.unity.UnityHub -force-wayland
 
 # Messengers
 Discord|discord
