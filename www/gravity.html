@@ -15,7 +15,8 @@
       h3,
       h4,
       h5,
-      h6 {
+      h6,
+      pre {
         width: fit-content;
         height: fit-content;
         padding: 0;
@@ -32,9 +33,8 @@
       <h2 class="box2d">Hello, World!</h2>
       <img class="box2d" src="img/hello.webp" />
       <h3 class="box2d">
-        <code
-          >&lt;script src="
-          <script>
+        <pre><code
+          >&lt;script src="<script>
             let _ = document.createElement("span");
             _.innerText = location.href.split("/").reduceRight((a, v, i, s) => {
               return (
@@ -44,9 +44,8 @@
               );
             }, "gravity.js");
             document.currentScript.replaceWith(_);
-          </script>
-          "&gt;&lt;/script&gt;</code
-        >
+          </script>"&gt;&lt;/script&gt;</code
+        ></pre>
       </h3>
       <button
         onclick="if (location.hash == '#text') location.hash = ''; else location.hash = 'text'; location.reload();"
