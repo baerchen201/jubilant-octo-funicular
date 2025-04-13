@@ -2,14 +2,27 @@ import argparse
 
 parser = argparse.ArgumentParser(description="Random Cat Generator")
 parser.add_argument(
-    "name", metavar="name", type=str, help="Name for randomly generated cat"
+    "name", metavar="name", type=str, help="Name for randomly generated cat", nargs="+"
+)
+parser.add_argument(
+    "-f", "--force", action="store_true", help="Bypass name validation", dest="force"
 )
 args = parser.parse_args()
 
+name = " ".join(args.name)
+
+if not args.force:
+    import re
+    import sys
+
+    if not re.fullmatch(r"(?:[a-z]+ ?)*[a-z]+", name, re.IGNORECASE):
+        print(f"Invalid name: {name}", file=sys.stderr)
+        raise SystemExit(1)
+
 import random
 
-random.seed(args.name)
-output: list[dict[str, str]] = [{"Name": args.name}]
+random.seed(name)
+output: list[dict[str, str]] = [{"Name": name}]
 
 output[0]["Size"] = random.choice(["small", "medium", "small", "medium", "large"])
 output[0]["Age"] = random.choice(
