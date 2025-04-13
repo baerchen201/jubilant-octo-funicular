@@ -51,11 +51,11 @@ p = False
 f = True
 for i in output:
     if not f:
-        print(f"\x1b[48;5;{232 + int(p) * 2}m{(m + mv + 2) * " "}\x1b[0m")
+        print(f"\x1b[48;5;{232 + int(p) * 2}m\x1b[K\x1b[0m")
         p = not p
     for k, v in i.items():
         print(
-            f"\x1b[48;5;{232 + int(p) * 2}m{k}:{(m - len(k)) * " "} {v}{(mv - len(v)) * " "}\x1b[0m"
+            f"\x1b[48;5;{232 + int(p) * 2}m {k}:{(m - len(k)) * " "} {v}\x1b[K\x1b[0m",
         )
         p = not p
     f = False
