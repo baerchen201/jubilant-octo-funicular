@@ -1,6 +1,8 @@
 import argparse
 
-parser = argparse.ArgumentParser(description="Random Cat Generator")
+parser = argparse.ArgumentParser(
+    description="Random Cat Generator", usage="cat.py [-f] name [...]"
+)
 parser.add_argument(
     "name", metavar="name", type=str, help="Name for randomly generated cat", nargs="+"
 )
