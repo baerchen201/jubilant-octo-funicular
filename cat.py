@@ -48,7 +48,7 @@ output[1]["Hair Length/Texture"] = random.choice(
 
 output.append({})
 output[2]["Energy"] = random.choice(["lazy", "playful", "hyperactive"])
-output[2]["Social Behavior"] = random.choice(
+output[2]["Social Behaviour"] = random.choice(
     ["affectionate", "aloof", "shy", "friendly"]
 )
 output[2]["Vocalization"] = random.choice(
