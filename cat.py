@@ -36,10 +36,10 @@ output[0]["Age"] = random.choice(
 )
 
 output.append({})
-output[1]["Color"] = random.choice(
+output[1]["Colour"] = random.choice(
     ["orange", "black", "white", "gray", "light gray", "brown", "creme", "yellow"]
 )
-output[1]["Eye Color"] = random.choice(
+output[1]["Eye Colour"] = random.choice(
     ["yellow", "amber", "yellow", "green", "blue", "orange", "copper"]
 )
 output[1]["Hair Length/Texture"] = random.choice(
