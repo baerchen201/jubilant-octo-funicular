@@ -1,7 +1,9 @@
+#!/usr/bin/env python3
 import argparse
 
 parser = argparse.ArgumentParser(
-    description="Random Cat Generator", usage="cat.py [-f] name [...]"
+    description="Random Cat Generator\n DISCLAIMER: THIS PRIGRAM USES RANDOMLY GENERATED DATA\n IF SOMEONES NAME GENERATES A COMBINATION THEY FIND UNFITTING,\n THEY JUST HAVE TO DEAL WITH IT (looking at you cris)",
+    usage="cat.py [-f] name [...]",
 )
 parser.add_argument(
     "name", metavar="name", type=str, help="Name for randomly generated cat", nargs="+"
@@ -73,19 +75,21 @@ match name.lower():
         output.append({"Preferred food": "RAM", "Note": "will blow up your computer"})
 
     case "angrybadwolf":
-        # fuck you wolf
+        # :)
         output[0]["Size"] = "small"
         output[0]["Age"] = "kitten"
 
-        output.append({"Note": "prefers British English"})
+        output.append({"Note": "small kitten"})
 
     case "baer1":
-        output.append({"Note": "fuck france"})
+        output.append({"Note": "fuck C Programming Language"})
 
     case "crisdeck":
+        random.seed(None)
         output.append(
             {
-                "Final words": '> "Can you get MVM tickets?"\n> "No..."\n> "Fuck you"\n*leaves vc, never seen since*',
+                "Final words": '> "Can you get MVM tickets?"\n> "No, I\'m too lazy to go to the store"\n> "Fuck you"\n*leaves vc, never seen since*',
+                "Note": f"cris please this is randomly generated this was never supposed to represent you\nand yes i know crisdeck is not your real name thats how usernames work\nrandom number (maybe this will help you understand randomness): {random.randint(1, 9)}",
             }
         )
 
