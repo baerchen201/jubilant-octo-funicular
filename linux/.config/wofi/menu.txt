@@ -2,45 +2,38 @@
 Firefox|firefox|firefox  					# Web Browser
 Alacritty (Terminal Emulator)|alacritty|alacritty 		# Terminal
 Nemo (File Manager)|nemo 					# Cinnamon File manager (Better style)
-Dolphin (File Manager)|dolphin					# KDE File Manager	(Better previews and icons)
 VLC Media Player|vlc 						# Media player
 Neovim|nvim|alacritty -e nvim 					# Text editor
-qBittorrent|qbittorrent						# Torrent client
-FileZilla (FTP)|filezilla					# FTP Client
+
 Nomacs (Image Viewer)|nomacs
 nwg-look (Appearance settings)|nwg-look
-Unity Hub|flatpak run com.unity.UnityHub -force-wayland
 
 # Messengers
-Discord|discord
-Telegram Messenger|telegram-desktop
+Discord|vesktop
+Telegram Messenger|Telegram
 Thunderbird (E-Mail)|thunderbird
 
 # Multimedia
 GNU Image Manipulation Program|gimp 				# Photo editor
-OBS Studio|obs					 		# Screen recorder
-Calibre (eBook manager)|calibre
 kdenlive|kdenlive|flatpak run org.kde.kdenlive			# Video editor
 Audacity|audacity						# Audio editor
 
 # Gaming
-Steam|steam|~/.steam/steam/steam.sh
-osu!lazer|osu|/usr/local/bin/osu
-Minecraft|prismlauncher|flatpak run org.prismlauncher.PrismLauncher
+Steam|steam
+Minecraft|prismlauncher
 
 # Other applications
 Visual Studio Code|vscode|code 					# IDE
-Blender|blender							# 3D Editing
+JetBrains Rider|rider						# C# IDE
+JetBrains CLion|clion						# C/C++ IDE
+JetBrains WebStorm|webstorm					# Web IDE
 r2modman|r2modman						# Unity game mod manager (lethag company)
-Free Download Manager|fdm					# Download Manager
-Virtual Machine Manager|virt-manager				# Turns out vmware sucks just as much as virtualbox
-JetBrains Rider|rider|flatpak run com.jetbrains.Rider		# C# IDE
-JetBrains PyCharm|pycharm|flatpak run com.jetbrains.PyCharm-Community # Python IDE
-AvaloniaILSpy|avaloniailspy					# ILSpy for linux
+Godot Editor|godot-mono
+DaVinci Resolve|davinci-resolve
+Calibre|calibre
 
 # Settings / System
 Take screenshot|grim|sleep 0.5; grim - | wl-copy 		# Copies screenshot to clipboard
 Audio settings|pavucontrol 					# PulseAudio settings (works with pipewire-pulse, use that)
-Audio mixer|qpwgraph						# "Mixer" yeah right this is crazy
-Tablet settings|opentabletdriver|otd-gui 			# OpenTabletDriver
+Audio mixer|qpwgraph
 Run|wofi --show run -np "Search commands" -O alphabetical 	# Show all commands
